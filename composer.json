@@ -1,5 +1,5 @@
 {
-    "name": "admin/demo1",
+    "name": "ngocmy/demo1",
     "autoload": {
         "psr-4": {
             "Admin\\Demo1\\": "src/"
@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-        
+
     }
 }
