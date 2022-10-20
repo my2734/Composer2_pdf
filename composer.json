@@ -1,0 +1,17 @@
+{
+    "name": "admin/demo1",
+    "autoload": {
+        "psr-4": {
+            "Admin\\Demo1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "my2734",
+            "email": "myb1910105@student.ctu.edu.vn"
+        }
+    ],
+    "require": {
+        
+    }
+}
