@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="facd804d-bf98-4bbf-a256-2e9ce89e240a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mvc/controllers/AddToCart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/controllers/Cart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/models/UserModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/frontend/pages/checkout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/views/frontend/pages/shopping_cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php_mvc_noithat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php_mvc_noithat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/CategoryBlog.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/CategoryBlog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Slider.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Slider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/User_Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/User_Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/core/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/core/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/core/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/AdminModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/BlogModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/BlogModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/Blog_CategoryOfBlogModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/Blog_CategoryOfBlogModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/Blog_TagsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/Blog_TagsModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CategoryBlogModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CategoryBlogModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/CategoryModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/CategoryModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/ProductModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/Product_CategoryModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/Product_CategoryModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/Product_ImageModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/Product_ImageModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/SliderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/SliderModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/models/TagsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/models/TagsModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/block/topNav.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/block/topNav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/layout/master.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/layout/master.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/login/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/login/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/frontend/pages/product_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/frontend/pages/product_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GMPdFgnClw4ju03EQjOxV6v3Vh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/TrainComposer/demo1",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="facd804d-bf98-4bbf-a256-2e9ce89e240a" name="Changes" comment="" />
+      <created>1666195565141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666195565141</updated>
+      <workItem from="1666195566594" duration="19000" />
+      <workItem from="1666195638664" duration="8764000" />
+      <workItem from="1666249844580" duration="1012000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <option name="startingDirectory" value="E:\TrainComposer\demo1" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

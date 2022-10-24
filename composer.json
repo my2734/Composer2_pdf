@@ -1,17 +1,16 @@
 {
-    "name": "ngocmy/demo1",
+    "name": "admin/composer1",
     "autoload": {
         "psr-4": {
-            "Admin\\Demo1\\": "src/"
+            "Controllers\\" : "controllers/"
         }
     },
     "authors": [
         {
-            "name": "my2734",
-            "email": "myb1910105@student.ctu.edu.vn"
+            "name": "Ngoc My"
         }
     ],
     "require": {
-
-    }
+        "phpmailer/phpmailer": "^6.5"
+    }   
 }
