@@ -136,10 +136,10 @@
                 if(isset($data['list_category'])){
                     foreach($data['list_category'] as $category){ ?>
                         <div class="col-md-3 col-sm-6 bg_general bg-primary p-0" data-aos="fade-up" data-aos-duration="1000" style="height: 500px;">
-                            <img class="bg_general_image" src="./public/uploads/<?php echo $category->image ?>" alt="">
+                            <a href="index.php?url=Home/category/<?php echo $category->id; ?>"><img class="bg_general_image" src="./public/uploads/<?php echo $category->image ?>" alt=""><a>
                             <div class="bg_info_banner">
-                                <h3>Bar Stool</h3>
-                                <p>20 products</p>
+                                <h3><?php echo $category->name; ?></h3>
+                                <p><?php echo $category->count_product; ?> products</p>
                                 <span class="arrow_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                             </div>
                             <div class="cover_bg1"></div>

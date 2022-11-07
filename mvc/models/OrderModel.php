@@ -82,5 +82,25 @@
             }
             return json_encode($result);
         }
+
+        public function count_order(){
+            $query = "SELECT * from tbl_order";
+            $result = $this->con->query($query);
+            return json_encode($result->rowCount());
+        }
+
+        public function getListLimit($start_in,$number_display){
+            $query = "SELECT * FROM tbl_order order by created_at DESC limit $start_in,$number_display";
+            $result = $this->con->query($query);
+            $arr = array();
+            if($result->rowCount() >0){
+                while($row = $result->fetch()){
+                    $row['order_detail'] = array();
+                    array_push($arr,$row);
+                }
+            }
+            return json_encode($arr);
+        }
+
     }
 ?>

@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Danh sách danh mục</h3>
+    <h3>Danh sách sản phẩm</h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -13,7 +13,6 @@
                 <a href="index.php?url=Product/create">
                     <button class="btn btn-primary">Thêm mới <i class="fa fa-plus"></i></button>
                 </a>
-
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -24,7 +23,6 @@
                             <th>Tên sản phẩm</th>
                             <th>Giá gốc</th>
                             <th>Giá khuyến mãi</th>
-                            <th>Mô tả</th>
                             <th>Trạng thái</th>
                             <th>Số lượng</th>
                             <th>Hình ảnh</th>
@@ -38,10 +36,9 @@
                                 foreach($data['productes'] as $key => $product){ ?>
                         <tr>
                             <th scope="row"><?php echo ($key+1); ?></th>
-                            <td><?php echo $product->name; ?></td>
+                            <td width="150"><?php echo $product->name; ?></td>
                             <td><?php echo $product->price_unit; ?></td>
                             <td><?php echo $product->price_promotion; ?></td>
-                            <td><?php echo $product->description; ?></td>
                             <td><span id="<?php echo $product->id ?>" class="badge btn_status_product<?php echo $product->id ?> btn_status_product badge-sm <?php echo ($product->status==1)?'badge-danger':'badge-secondary'  ?>"><?php echo ($product->status==1)?"Hiển thị":"Không hiển thị"; ?></span></td>
                             <td><?php echo $product->quantity; ?></td>
                             <td>
@@ -81,6 +78,14 @@
                         <?php } } ?>
                     </tbody>
                 </table>
+                <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                    <ul class="pagination">
+                        <?php 
+                            for($i=1;$i<=$data['page_number'];$i++){ ?>
+                                    <li class="paginate_button active"><a href="index.php?url=Product/index/page=<?php echo $i ?>" aria-controls="datatable-checkbox" data-dt-idx="1" tabindex="0"><?php echo ($i) ?></a></li>
+                           <?php  }  ?>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

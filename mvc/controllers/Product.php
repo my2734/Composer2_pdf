@@ -1,4 +1,5 @@
 <?php
+    require_once('./mvc/helper/process_url.php');
     class Product extends Controller{
         public $product;
         public $category;
@@ -13,12 +14,28 @@
         }
 
         public function index(){
-             $productes = $this->product->getList();
-             $productes = json_decode($productes);
+            
+            $count_product = json_decode($this->product->count_product());
+            
+            $number_display = 6;
+            $page_number = ceil($count_product/$number_display);
 
+            $process_url = new process_url();
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $productes = $this->product->getListlimit($start_in,$number_display);
+            }else{ //url khong chua 
+                $start_in = 0;
+                $productes = $this->product->getListlimit($start_in,$number_display);
+            }
+            $productes = json_decode($productes);
             $this->view('backend/layout/master',[
                 'page'          => 'backend/product/index',
-                 'productes'     => $productes
+                'productes'     => $productes,
+                'page_number'   => $page_number
             ]);
         }
 

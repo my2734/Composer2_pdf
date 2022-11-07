@@ -200,5 +200,57 @@
             }
             return json_encode($arr);
         }
+
+        public function count_blog(){
+            $query = "SELECT * from blogs";
+            $result = $this->con->query($query);
+            return json_encode($result->rowCount());
+        }
+
+        public function getListLimit($start_in,$number_display){
+            $query = "SELECT * FROM blogs order by updated_at DESC limit $start_in,$number_display";
+           
+            $result = $this->con->query($query);
+            $arr = array();
+            if($result->rowCount() > 0){
+                while($row_blog_item = $result->fetch()){
+                    $blog_id = $row_blog_item['id'];
+                    //add cat_name
+                    $row_blog_item['cat_name'] = array();
+                    $query_select_blog_categoryofblog = "SELECT * FROM blog_categoryofblog where blog_id = '$blog_id'";
+                    $result_select_blog_categoryofblog = $this->con->query($query_select_blog_categoryofblog);
+                    if($result_select_blog_categoryofblog->rowCount() > 0 ){
+                        while($row_blog_categoryoblog = $result_select_blog_categoryofblog->fetch()){
+                            $cat_id = $row_blog_categoryoblog['cat_id'];
+//                            echo "cat_id = ".$cat_id;
+                            $query_select_to_get_name_category = "SELECT * FROM category_of_blog WHERE id = '$cat_id'";
+                            $result_select_to_get_name_category = $this->con->query($query_select_to_get_name_category);
+                            if($result_select_to_get_name_category->rowCount() > 0){
+                                $row_select_to_get_name_category = $result_select_to_get_name_category->fetch();
+                                array_push($row_blog_item['cat_name'],$row_select_to_get_name_category['name']);
+                            }
+                        }
+                    }
+                    //add tags_name
+                    $row_blog_item['tags_name'] =  array();
+                    $query_select_tags = "SELECT * FROM blog_tags WHERE blog_id = '$blog_id'";
+                    $result_select_tags = $this->con->query($query_select_tags);
+                    if($result_select_tags->rowCount()){
+                        while($row_blog_tags = $result_select_tags->fetch()){
+                            $tags_id = $row_blog_tags['tags_id'];
+
+                            $query_select_to_get_name_tags = "SELECT * FROM tags where id = '$tags_id'";
+                            $result_select_to_get_name_tags = $this->con->query($query_select_to_get_name_tags);
+                            if($result_select_to_get_name_tags->rowCount() > 0){
+                                $row_select_to_get_name_tags = $result_select_to_get_name_tags->fetch();
+                                array_push($row_blog_item['tags_name'],$row_select_to_get_name_tags['name']);
+                            }
+                        }
+                    }
+                    array_push($arr,$row_blog_item);
+                }
+            }
+            return  json_encode($arr);
+        }
     }
 ?>

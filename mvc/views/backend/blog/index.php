@@ -84,6 +84,14 @@
                         </tbody>
                 </table>
             </div>
+            <div class="dataTables_paginate paging_simple_numbers float-right" id="datatable-checkbox_paginate">
+                <ul class="pagination">
+                    <?php 
+                        for($i=1;$i<=$data['total_page_number'];$i++){ ?>
+                                <li class="paginate_button active"><a href="index.php?url=Blog/index/page=<?php echo $i ?>" aria-controls="datatable-checkbox" data-dt-idx="1" tabindex="0"><?php echo ($i) ?></a></li>
+                    <?php  }  ?>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

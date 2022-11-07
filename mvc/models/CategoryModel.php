@@ -26,6 +26,11 @@
             $categories = array();
             if($result->rowCount() >0){
                 while($row = $result->fetch()){
+                   
+                    $query_count_product = "SELECT COUNT(id) FROM productes WHERE cat_id = '$row[0]'";
+                    $result_count_product = $this->con->query($query_count_product);
+                    $count_product =  $result_count_product->fetch()[0];
+                    $row['count_product'] = $count_product;
                     array_push($categories,$row);
                 }
             }

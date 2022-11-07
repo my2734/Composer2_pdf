@@ -1,4 +1,5 @@
 <?php 
+require_once('./mvc/helper/process_url.php');
     class Blog extends Controller{
         public $blogs;
         public $category_of_blogs;
@@ -17,11 +18,27 @@
             $this->blog_tags    = $this->model('Blog_TagsModel');
         }
         public function index(){
+            // $list_blog = json_decode($this->blogs->getList());
 
-            $list_blog = json_decode($this->blogs->getList());
+            $count_blog  = json_decode($this->blogs->count_blog());
+            $number_display = 6;
+            $total_page_number = ceil($count_blog/$number_display);
+            $process_url = new process_url();
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $list_blog = json_decode($this->blogs->getListLimit($start_in,$number_display));
+            }else{ //url khong chua page
+                $start_in = 0;
+                $list_blog = json_decode($this->blogs->getListLimit($start_in,$number_display));
+            }
+
             $this->view('backend/layout/master',[
                 'page'          => 'backend/blog/index',
-                'list_blog'     => $list_blog
+                'list_blog'     => $list_blog,
+                'total_page_number' => $total_page_number
             ]);
         }
 
