@@ -26,29 +26,27 @@
 
                 <h5 class="mt-5">Sort By</h5>
                 <hr class="separate_category">
-                <select class="form-control custom_option">
-                    <option style="height: 80px!important;;">Sort by average rating</option>
-                    <option>Sort by popularity</option>
-                    <option>Sort by newness</option>
-                    <option>Sort by rice: low to high</option>
-                    <option>Sort by rice: high to low</option>
-                    <option>Product Name: Z</option>
-                </select>
+                <div class="filter__sort">
+                <a href="index.php?url=Home/low_to_high_product" class="icon_sort"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i>Thấp đến cao</a> <br>
+                <a href="index.php?url=Home/high_to_low_product" class="icon_sort"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Cao đến thấp</a>
+   
+</div>
             </div>
             <!-- End Category -->
             <div class="col-lg-9">
                 <h3><?php echo isset($data['category_item'])?$data['category_item']->name:"" ?></h3>
-                <div class="row">
+                <h3><?php echo isset($data['message_success'])?$data['message_success']:"" ?></h3>
+                <div class="row mt-2">
                     <?php
                     if(isset($data['list_product'])){
                         foreach($data['list_product'] as $product){ ?>
-                            <div  class="col-lg-4   col-md-6 col-sm-6 product-cover">
+                            <div  class="col-lg-4 my-5  col-md-6 col-sm-6 product-cover">
                                 <div class="product-item">
                                     <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                         <img class="img-pro-primary" src="./public/uploads/<?php echo $product->image[0]; ?>" alt="">
                                     </a>
                                     <div class="add_to_cart">
-                                        <span>Add to cart</span>
+                                    <span id="<?php echo $product->id; ?>" class="btn_add_one_cart">Add to cart</span>
                                         <span><i class="fa fa-heart"></i></span>
                                     </div>
                                     <div class="product_info">

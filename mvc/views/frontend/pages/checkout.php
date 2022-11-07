@@ -102,10 +102,11 @@
                         <select name="method_payment" class="form-control">
                             <option value="0">Thanh toán khi nhận hàng</option>
                             <option value="1">Thanh toán online - MOMO</option>
+                            <option value="2">Thanh toán online - VNPAY</option>
                         </select>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn2 btn_login btn-primary mr-4">Đặt hàng</button>
+                        <button type="submit" name="redirect" class="btn2 btn_login btn-primary mr-4">Đặt hàng</button>
                     </div>
                 </form>
             </div>
@@ -148,10 +149,14 @@
                         </tr>
                     </tbody>
                 </table>
-                <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
+                <!-- <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
                           action="index.php?url=Payment/proccess_momo">
                     <input type="submit" class="btn2 text-center btn_review btn-primary" value="Thanh toán bằng trực tuyến MOMO">
                 </form>
+                <form class="" method="POST" enctype="application/x-www-form-urlencoded"
+                          action="index.php?url=Payment/proccess_vnpay">
+                    <input type="submit" name="redirect" class="btn2 text-center btn_review btn-primary" value="Thanh toán bằng trực tuyến VNPay">
+                </form> -->
             </div>
         </div>
     </div>

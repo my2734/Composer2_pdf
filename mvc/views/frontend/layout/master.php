@@ -17,6 +17,7 @@
 
     <!-- Custom css Style  -->
     <link rel="stylesheet" href="./public/frontend/css/style.css">
+    <link rel="stylesheet" href="./public/frontend/css/style2.css">
     <style>
         .text_link{
             font-size: 14px;
@@ -30,7 +31,59 @@
             color: #b19361;
         }
 
+        .hover_login:hover .box_login{
+        display: block;
 
+        }
+
+        .box_login{
+            position: absolute;
+            width: 100px;
+            top: 140%;
+            left: -20%;
+            padding: 4px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            display: none;
+            transition: all 0.3s linear;
+        }
+
+        .box_login::after{
+            content: "";
+            display: block;
+            position: absolute;
+            height: 50px;
+            width: 20px;
+        /*     background-color: red; */
+            top: -30px;
+            width: 100%;
+        }
+
+        .cover_img_user{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        
+        }
+
+        .cover_img_user img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        }
+
+        .cover_img_avatar{
+            height: 30px;
+            width: 30px;
+        }
+
+        .cover_img_avatar img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
     </style>
 
@@ -57,17 +110,14 @@ include('./mvc/views/frontend/block/footer.php');
 
 
 <!-- Jquery -->
+<!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <!-- Bootstrap 4  -->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-
-
-
+<!-- Plugin js -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script>
     AOS.init();
@@ -77,7 +127,7 @@ include('./mvc/views/frontend/block/footer.php');
 <script>
     $(document).ready(function(){
         $('.btn_add_one_cart').click(function(){
-           var pro_id = $(this).attr('id');
+               var pro_id = $(this).attr('id');
 
             $.get({
                 url: "index.php?url=AddToCart/add_to_cart",
@@ -140,6 +190,25 @@ include('./mvc/views/frontend/block/footer.php');
                     $('.order_status_nhan_hang_confirm'+data['order_id']).removeClass('btn2');
                 }
             });
+        });
+
+        $('#search_key').keyup(function(){
+            const search_key = $(this).val();
+            if(search_key!=""){
+                $.get({
+                url:"index.php?url=Home/review_search",
+                data: {search_key:search_key},
+                success: function(data){
+                    $('#box_search').show(100);
+                    $('#box_search').html(data);
+                }
+            });
+            }
+           
+            
+            if(search_key==""){
+                $('#box_search').hide(100);
+            }
         });
     });
 </script>

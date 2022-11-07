@@ -161,13 +161,17 @@
             if($_POST['method_payment']==1){
                 $payment =  new Payment();
                 $payment->proccess_momo();
+            }elseif($_POST['method_payment']==2){
+                $payment =  new Payment();
+                $payment->proccess_vnpay();
             }
+
 
             
             
 
             if(isset($order_id)){
-                unset($_SESSION['cart']);
+                // unset($_SESSION['cart']);
                 // header('location: index.php?url=History_Order');
             }
         }

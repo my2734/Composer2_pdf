@@ -220,5 +220,104 @@ class ProductModel extends DB{
 //         die();
         return json_encode($arr);
     }
+
+    public function list_low_to_high_product(){
+        $query = "SELECT * FROM productes ORDER BY price_unit ASC";
+        $result = $this->con->query($query);
+        $arr = array();
+        if($result->rowCount() > 0){
+            while($row =  $result->fetch()){
+                $row['image'] = array();
+                // select image of product
+                $id = $row['id'];
+                $cat_id = $row['cat_id'];
+                $query_select_image = "SELECT * FROM product_image where product_id = '$id'";
+                $result_select_image = $this->con->query($query_select_image);
+                if($result_select_image->rowCount() > 0){
+                    while($row_select_image = $result_select_image->fetch()){
+                        $image_of_product = $row_select_image['image'];
+                        array_push($row['image'],$image_of_product);
+                    }
+                }
+                // get category name of product
+                $query_select_category = "SELECT * FROM categories WHERE id = '$cat_id'";
+                $result_select_category =  $this->con->query($query_select_category);
+                if($result_select_category->rowCount() > 0){
+                    $row_select_category = $result_select_category->fetch();
+                        $row['cat_name'] =  $row_select_category['name'];
+                }
+                array_push($arr,$row);
+            }
+        }
+//         echo json_encode($arr);
+//         die();
+        return json_encode($arr);
+   }
+
+   public function list_product_need_find($search_key){
+    $query = "SELECT * FROM productes WHERE status = '1' and name LIKE '%$search_key%'";
+    $result = $this->con->query($query);
+    $arr = array();
+    if($result->rowCount() > 0){
+        while($row =  $result->fetch()){
+            $row['image'] = array();
+            // select image of product
+            $id = $row['id'];
+            $cat_id = $row['cat_id'];
+            $query_select_image = "SELECT * FROM product_image where product_id = '$id'";
+            $result_select_image = $this->con->query($query_select_image);
+            if($result_select_image->rowCount() > 0){
+                while($row_select_image = $result_select_image->fetch()){
+                    $image_of_product = $row_select_image['image'];
+                    array_push($row['image'],$image_of_product);
+                }
+            }
+            // get category name of product
+            $query_select_category = "SELECT * FROM categories WHERE id = '$cat_id'";
+            $result_select_category =  $this->con->query($query_select_category);
+            if($result_select_category->rowCount() > 0){
+                $row_select_category = $result_select_category->fetch();
+                    $row['cat_name'] =  $row_select_category['name'];
+            }
+            array_push($arr,$row);
+        }
+    }
+    
+    return json_encode($arr);
+   }
+
+   public function list_high_to_low_product(){
+    $query = "SELECT * FROM productes ORDER BY price_unit DESC";
+    $result = $this->con->query($query);
+    $arr = array();
+    if($result->rowCount() > 0){
+        while($row =  $result->fetch()){
+            $row['image'] = array();
+            // select image of product
+            $id = $row['id'];
+            $cat_id = $row['cat_id'];
+            $query_select_image = "SELECT * FROM product_image where product_id = '$id'";
+            $result_select_image = $this->con->query($query_select_image);
+            if($result_select_image->rowCount() > 0){
+                while($row_select_image = $result_select_image->fetch()){
+                    $image_of_product = $row_select_image['image'];
+                    array_push($row['image'],$image_of_product);
+                }
+            }
+            // get category name of product
+            $query_select_category = "SELECT * FROM categories WHERE id = '$cat_id'";
+            $result_select_category =  $this->con->query($query_select_category);
+            if($result_select_category->rowCount() > 0){
+                $row_select_category = $result_select_category->fetch();
+                    $row['cat_name'] =  $row_select_category['name'];
+            }
+            array_push($arr,$row);
+        }
+    }
+//         echo json_encode($arr);
+//         die();
+    return json_encode($arr);
+}
+
 }
 ?>

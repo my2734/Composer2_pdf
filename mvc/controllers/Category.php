@@ -150,6 +150,7 @@
         }
 
         public function update($id){
+            
             if(isset($_POST['btnStoreCategory'])){
                 // validate
                 if($_POST['name']==""){
@@ -158,11 +159,38 @@
                         'error_category' => 'Vui lòng nhập tên danh mục'
                     ]);
                 }else{
+                    $category_edit = json_decode($this->category->getId($id));
                     $id = $id;
                     $name = $_POST['name'];
                     $status = isset($_POST['status'])?1:0;
                     $updated_at = date('Y-m-d H:i:s');
-                    $result = $this->category->update($id,$name,$status,$updated_at);
+                    $image = $category_edit->image;
+
+                    //xu li image
+                    if($_FILES['image']['name']!=""){
+                        //Xoa anh cu
+                        $path_image_cat = './public/uploads/'.$category_edit->image;
+                        if(file_exists($path_image_cat)){
+                            unlink($path_image_cat);
+                        }
+                        //upload anh moi
+
+                        $allowTypes = array('jpg','png','jpeg','gif','image/jpeg');
+                        $path = "./public/uploads/";
+                        if($_FILES['image']['name']){
+                            if(in_array($_FILES['image']['type'],$allowTypes)){
+                                $file_name = $_FILES['image']['name'];
+                                $array = explode('.',$file_name);
+
+                                $new_name = $array[0].rand(0,999).'.'.$array[1];
+                                $image = $new_name;
+                                
+                                move_uploaded_file($_FILES['image']['tmp_name'],$path.$new_name);
+                            }
+                        }
+                    }
+
+                    $result = $this->category->update($id,$name,$image,$status,$updated_at);
                     $kq = json_decode($result);
                     if($result == 'false'){
                         $category_edit = $this->category->getId($id);

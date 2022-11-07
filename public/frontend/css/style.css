@@ -100,7 +100,7 @@
     padding: 4px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    display: none;
+    /* display: none; */
     transition: all 0.3s linear;
 }
 
@@ -108,10 +108,10 @@
     content: "";
     display: block;
     position: absolute;
-    height: 20px;
+    height: 50px;
     width: 20px;
-    /* background-color: red; */
-    top: -10px;
+/*     background-color: red; */
+    top: -30px;
     width: 100%;
 }
 
@@ -299,9 +299,9 @@
 
 
 .btn{
-    background-color: rgb(91 44 208) !important;
-    border-color: rgb(91 44 208)!important;
-    border-radius: 30px;
+    background-color: #b19361;
+    border-color: #b19361;
+    border-radius: 10px;
     padding-left: 30px;
     padding-right: 30px;
     color: #fff;

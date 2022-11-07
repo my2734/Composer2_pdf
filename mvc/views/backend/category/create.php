@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Tạo mới danh mục</h3>
+    <h3><?php echo isset($data['category_edit'])?"Chỉnh sửa danh mục":"Tạo mới danh mục" ?></h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -63,7 +63,7 @@
                         <div class="col-md-9 col-sm-9  offset-md-3">
                             <a href="index.php?url=Category/index"><button type="button" class="btn btn-primary">Cancel</button></a>
                             <button class="btn btn-primary" type="reset">Reset</button>
-                            <button type="submit" name="btnStoreCategory" class="btn btn-success">Submit</button>
+                            <button type="submit" name="btnStoreCategory" class="btn btn-<?php echo isset($data['category_edit'])?"danger":"success" ?>"><?php echo isset($data['category_edit'])?"Update":"Submit" ?></button>
                         </div>
                     </div>
                 </form>

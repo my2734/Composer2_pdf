@@ -48,7 +48,7 @@
                                         <img class="img-pro-primary" src="./public/uploads/<?php echo $product->image[0]; ?>" alt="">
                                     </a>
                                     <div class="add_to_cart">
-                                        <span id="<?php echo $product->id; ?>" class="btn_add_one_cart">Add to cart</span>
+                                        <span id="<?php echo $product->id; ?>" class="btn_add_one_cart">Add to cart1234</span>
                                         <span ><i class="fa fa-heart"></i></span>
                                     </div>
                                     <div class="product_info">

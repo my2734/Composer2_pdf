@@ -20,6 +20,7 @@
             $this->tags = $this->model('TagsModel');
             $this->blog_categoryofblog = $this->model('Blog_CategoryOfBlogModel');
             $this->blog_tags = $this->model('Blog_TagsModel');
+            $this->user = $this->model('UserModel');
         }
 
         function index(){
@@ -248,13 +249,57 @@
             $categories = json_decode($this->category->getList());
             $list_product = json_decode($this->product->getList());
             $list_blog = json_decode($this->blog->getList());
-
+            
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/product',
                 'categories'            => $categories,
                 'list_product'          => $list_product,
                 'list_blog'             => $list_blog,
                 'total_cart'            => $total_cart
+            ]);
+        }
+
+        public function low_to_high_product(){
+            $total_cart = 0;
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+            $categories = json_decode($this->category->getList());
+            $list_product = json_decode($this->product->list_low_to_high_product());
+            $list_blog = json_decode($this->blog->getList());
+            // echo json_encode($list_product);
+            // die();
+
+            $this->view('frontend/layout/master',[
+                'page'                  => 'frontend/pages/product',
+                'categories'            => $categories,
+                'list_product'          => $list_product,
+                'list_blog'             => $list_blog,
+                'total_cart'            => $total_cart,
+                'message_success'       => 'Kết quả của sắp xếp từ thấp đến cao theo giá'
+            ]);
+        }
+
+        public function high_to_low_product(){
+            $total_cart = 0;
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+            $categories = json_decode($this->category->getList());
+            $list_product = json_decode($this->product->list_high_to_low_product());
+            $list_blog = json_decode($this->blog->getList());
+            
+            $this->view('frontend/layout/master',[
+                'page'                  => 'frontend/pages/product',
+                'categories'            => $categories,
+                'list_product'          => $list_product,
+                'list_blog'             => $list_blog,
+                'total_cart'            => $total_cart,
+                'message_success'       => 'Kết quả của sắp xếp từ cao đến thấp theo giá'
             ]);
         }
 
@@ -265,6 +310,108 @@
             $mail = new Mail();
             $mail->contact_sendMail($full_name,$email,$content);
             header('location: index.php');
+        }
+
+        public function review_search(){
+            $search_key = $_GET['search_key'];
+            $list_product_need_find = json_decode($this->product->list_product_need_find($search_key));
+            $html = "";
+            foreach($list_product_need_find as $product){
+                $html.='<li style="display:block;" class="mt-3"><a href="index.php?url=Home/product_detail/'.$product->id.'"><img height="50" width="50" class="float-left mr-3" src="./public/uploads/'.$product->image[0].'" alt=""></a><span ><a href="index.php?url=Home/product_detail/'.$product->id.'" class="">'.$product->name.'</a><br><span class="info_search_item">'.$product->created_at.'</span></span></li>';
+            }
+            echo $html;
+        }
+
+        public function search_product(){
+            $search_key = $_POST['search_key'];
+            $total_cart = 0;
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+            $categories = json_decode($this->category->getList());
+            $list_product = json_decode($this->product->list_product_need_find($search_key));
+            $list_blog = json_decode($this->blog->getList());
+            
+            $this->view('frontend/layout/master',[
+                'page'                  => 'frontend/pages/product',
+                'categories'            => $categories,
+                'list_product'          => $list_product,
+                'list_blog'             => $list_blog,
+                'total_cart'            => $total_cart,
+                'message_success'       => 'Kết quả tìm kiếm "'.$search_key.'"'
+            ]);
+        }
+
+        public function get_user_info(){
+            $categories = json_decode($this->category->getList());
+            $user_id = $_SESSION['user_login']['id'];
+            
+            $user_login = json_decode($this->user->getId($user_id));
+           
+            $this->view('frontend/layout/master',[
+                'page'                  => 'frontend/pages/user_info',
+                'categories'            => $categories,
+                'user_login'             => $user_login
+            ]);
+        }
+
+        public function update_user_info(){
+            $categories = json_decode($this->category->getList());
+            $user_id = $_SESSION['user_login']['id'];
+            $user_login = json_decode($this->user->getId($user_id));
+           
+            
+            $user_name = $_POST['user_name'];
+            $full_name = $_POST['full_name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $country = $_POST['country'];
+            $conscious = $_POST['conscious'];
+            $district = $_POST['district'];
+            $commune = $_POST['commune'];
+            $address_detail = isset($_POST['address_detail'])?$_POST['address_detail']:"";
+            $updated_at = Date('Y-m-d H:i:s');
+            $image = $user_login->image;
+
+            if($_FILES['image']['name']!=""){
+               
+                //Xoa anh cu
+                //neu ton tai anh cu
+                if($user_login->image != ""){
+                    $path_image_user = './public/uploads/'.$user_login->image;
+                    if(file_exists($path_image_cat)){
+                        unlink($path_image_cat);
+                    }
+                }
+
+
+                //upload anh moi
+                $allowTypes = array('jpg','png','jpeg','gif','image/jpeg');
+                $path = "./public/uploads/";
+                if($_FILES['image']['name']){
+                    if(in_array($_FILES['image']['type'],$allowTypes)){
+                        $file_name = $_FILES['image']['name'];
+                        $array = explode('.',$file_name);
+                        $new_name = $array[0].rand(0,999).'.'.$array[1];
+                        $image = $new_name;
+                        move_uploaded_file($_FILES['image']['tmp_name'],$path.$new_name);
+                    }
+                }
+            }
+            
+            
+
+            $result = json_decode($this->user->update($user_name,$full_name,$email,$phone,$country,$conscious,$district,$commune,$address_detail,$updated_at,$image,$user_login->id));
+            $_SESSION['user_login']['id'] = $user_id;
+            $_SESSION['user_login']['name'] = $user_name;
+            $_SESSION['user_login']['avatar'] = $image;
+            
+            
+            if($result){
+                header("Location: index.php?url=Home/get_user_info");
+            }
         }
 
 

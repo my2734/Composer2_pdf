@@ -81,7 +81,7 @@
                 <?php
                     if(isset($data['list_product'])){
                         foreach($data['list_product'] as $product){ ?>
-                            <div  class="col-lg-3   col-md-6 col-sm-6 product-cover" data-aos="fade-up"  data-aos-duration="1000" >
+                            <div  class="col-lg-3  mt-5 col-md-6 col-sm-6 product-cover" data-aos="fade-up"  data-aos-duration="1000" >
                                 <div class="product-item">
                                     <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                         <img class="img-pro-primary" src="./public/uploads/<?php echo $product->image[0]; ?>" alt="">

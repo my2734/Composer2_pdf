@@ -5,6 +5,7 @@
             $this->product = $this->model('ProductModel');
         }
         public function add_to_cart(){
+            
             $pro_id = $_GET['pro_id'];
             $qty = $_GET['qty'];
             $id = $pro_id;

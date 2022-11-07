@@ -79,6 +79,9 @@
                 }else{
                     $_SESSION['user_login']['id'] = $result->id;
                     $_SESSION['user_login']['name'] = $result->user_name;
+                    if($result->image != ""){
+                        $_SESSION['user_login']['avatar'] = $result->image;
+                    }
 
                     $list_slider = json_decode($this->slider->getList());
                     $list_product = json_decode($this->product->getList_limit());

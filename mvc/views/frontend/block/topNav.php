@@ -28,15 +28,58 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?url=Home/contact">Contact Us</a>
                 </li>
-
+                 <li class="ml-4" style="position: relative;">
+                    <form method="POST" action="index.php?url=Home/search_product">
+                        <div class="input-group" style="width: 200px;">
+                            <input type="text" id="search_key" name="search_key" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default ml-2" type="button">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </li>       
             </ul>
+            <ul id="box_search"  style="display: none;position: absolute; background-color: white;left: 35%; top: 100%; padding: 20px;width: 300px;" >
+                <!-- <li style="display:block;" class="mt-3">
+                    <img height="50" width="50" class="float-left mr-3" src="https://cdn.zsofa.vn/wp-content/uploads/2020/10/sofa-da-cao-cap-3.jpg" alt="">
+                    <span >
+                        <a class="">Hello ca nha yeu</a><br>
+                        <span class="info_search_item">2022-09-21 22:23:40</span>
+                    </span>
+                </li>
+                <li style="display:block;" class="mt-3">
+                    <img height="50" width="50" class="float-left mr-3" src="https://cdn.zsofa.vn/wp-content/uploads/2020/10/sofa-da-cao-cap-3.jpg" alt="">
+                    <span >
+                        <a class="">Hello ca nha yeu</a><br>
+                        <span class="info_search_item">2022-09-21 22:23:40</span>
+                    </span>
+                </li> -->
+            </ul>
+           
             <ul class="nav-list-icon" style="list-style: none;">
                 <li class="hover_login">
-                    <a  href="" style="position: relative;"><i  class="fa fa-user"></i><?php echo isset($_SESSION['user_login']['name'])?$_SESSION['user_login']['name']:""; ?></a>
-                    <div class="box_login text-center">
+                    <a  href="" style="position: relative;">
+                    <?php 
+                        if(isset($_SESSION['user_login'])){ ?>
+                            <div style="width: 30px; height: 30px; display: inline-block;">
+                                <?php  
+                                    if(isset($_SESSION['user_login']['avatar'])){ ?>
+                                        <img style="object-fit: cover; width: 100%; height: 100%;border-radius:50%; " src="./public/uploads/<?php echo $_SESSION['user_login']['avatar'] ?>">
+                                    <?php }else{ ?>
+                                        <img style="object-fit: cover; width: 100%; height: 100%;border-radius:50%; " src="https://thegioidienanh.vn/stores/news_dataimages/yenlinh/032022/09/17/2921_Gong-Yoo-2701221.jpg?rt=20220309173030">
+                                    <?php }  ?>
+                            </div>
+                        <?php }else{ ?>
+                            <i  class="fa fa-user"></i>
+                        <?php } ?>
+                        <?php echo isset($_SESSION['user_login']['name'])?$_SESSION['user_login']['name']:""; ?>
+                    </a>
+                    <div class="box_login text-center p-2" style="width: 200px;">
                         <!-- <p class="text-center">Login</p> -->
                         <?php
                             if(isset($_SESSION['user_login'])) { ?>
+                                <a href="index.php?url=Home/get_user_info" style="cursor: pointer" class="text-center mt-3 ">Thông tin cá nhân</a><br>
+                                <hr class="my-1">
                                 <a href="index.php?url=User_Login/logout" style="cursor: pointer" class="text-center mt-3 ">Logout</a>
                         <?php }else{ ?>
                                 <a href="index.php?url=User_Login/login" style="cursor: pointer" class="text-center mt-3 ">Login</a>
@@ -50,4 +93,5 @@
 
         </div>
     </nav>
+    
 </div>

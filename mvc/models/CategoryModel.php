@@ -7,7 +7,7 @@
             if($this->con->query($query)){
                 $kq = true;
             }
-            echo json_encode($kq);
+            return json_encode($kq);
         }
 
         public function getList(){
@@ -50,8 +50,8 @@
             return json_encode($category_edit);
         }
 
-        public function update($id,$name,$status,$updated_at){
-            $query = "UPDATE categories SET name = '$name', status = '$status', updated_at = '$updated_at' where id = '$id'";
+        public function update($id,$name,$image,$status,$updated_at){
+            $query = "UPDATE categories SET name = '$name',image = '$image', status = '$status', updated_at = '$updated_at' where id = '$id'";
             $result = false;
             if($this->con->query($query)){
                 $result = true; 
@@ -60,6 +60,8 @@
         }
 
         public function update_status($id,$status,$updated_at){
+            echo "hello 123";
+            die();
             $query = "UPDATE categories SET status = '$status', updated_at = '$updated_at' where id = '$id'";
             $this->ccon->query($query);
         }
