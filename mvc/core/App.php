@@ -19,6 +19,7 @@
                 }
             }
 
+
             if(in_array($this->controller,$array_need_middleware_admin) && !isset($_SESSION['admin_login'])){
                 require_once('./mvc/controllers/Admin_Login.php');
                 $this->controller = "Admin_Login";

@@ -94,9 +94,9 @@
                                         <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                             <?php echo $product->name ?>
                                         </a>
-                                        <span>$<?php echo $product->price_unit ?><?php
+                                        <span><?php echo number_format($product->price_unit) ?>đ<?php
                                                 if($product->price_promotion!=0){ ?>
-                                                    -$<?php echo $product->price_promotion ?>
+                                                    -<?php echo number_format($product->price_promotion) ?>
                                               <?php } ?>
                                         </span>
                                     </div>
@@ -111,10 +111,11 @@
                 <div class="col">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <?php 
+                                for($i=1;$i<=$data['total_page_number'];$i++){ ?>
+                                    <li class="page-item mx-1" ><a class="page-link" <?php if($data['page_index']==$i){ ?> style="background-color: #b19361; color: #fff;" <?php } ?> href="index.php?url=Home/index/page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                            <?php }
+                            ?>
                         </ul>
                     </nav>
                 </div>

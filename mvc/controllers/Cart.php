@@ -21,11 +21,15 @@
                 }
             }
             if(isset($_SESSION['user_login'])){
-               
+                $list_cart = array();
+                if(isset($_SESSION['cart'])){
+                    $list_cart = $_SESSION['cart'];
+                }
+
                 $this->view('frontend/layout/master',[
                     'page' => 'frontend/pages/shopping_cart',
                     'categories'            => $categories,
-                    'list_cart'     => $_SESSION['cart'],
+                    'list_cart'     => $list_cart,
                     'total_cart'    => $total_cart,
                     'total_price'   => $total_price
                 ]);

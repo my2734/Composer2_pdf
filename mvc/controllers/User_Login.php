@@ -32,6 +32,7 @@
 
             if(isset($_SESSION['user_login'])){
                 unset($_SESSION['user_login']);
+                unset($_SESSION['cart']);
             }
             $this->view('frontend/login/login');
             header('location index.php?url=User_Login/login');

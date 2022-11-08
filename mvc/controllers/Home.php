@@ -1,5 +1,6 @@
 <?php 
     require_once('./mvc/controllers/Mail.php');
+    require_once('./mvc/helper/process_url.php');
     class Home extends Controller{
         public $slider;
         public $product;
@@ -24,6 +25,7 @@
         }
 
         function index(){
+            
             $list_slider = json_decode($this->slider->getList());
             $list_product = json_decode($this->product->getList_limit());
             $list_category = json_decode($this->category->getListLimit4());
@@ -35,12 +37,36 @@
             }
 
             $total_cart = 0;
-            if(isset($_SESSION['cart'])){
+           if(isset($_SESSION['cart'])){
                 foreach($_SESSION['cart'] as $cart){
                     $total_cart+=$cart['quatity'];
                 }
             }
 
+            //pagination products
+            $count_product  = json_decode($this->product->count_product());
+            
+            $number_display = 8;
+            $total_page_number = ceil($count_product/$number_display);
+           
+            $process_url = new process_url();
+        
+            if(!isset($_GET['url'])){
+                $_GET['url'] = "Home/index";
+            }
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+            }else{ //url khong chua page
+                $page_index=1;
+                $start_in = 0;
+                $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+            }
+            
+           
 
 //            foreach($list_product as $product){
 //                echo $product->image[0];
@@ -53,7 +79,9 @@
                 'list_category' => $list_category,
                 'list_blog'     => $list_blog,
                 'categories'    => $categories,
-                'total_cart'    => $total_cart
+                'total_cart'    => $total_cart,
+                'total_page_number' => $total_page_number,
+                'page_index'        => $page_index
             ]);
         }
 
@@ -87,11 +115,32 @@
 
         public function category($id){
             $categories = json_decode($this->category->getList());
-            $list_product = json_decode($this->product->getBy_CatId($id));
+            // $list_product = json_decode($this->product->getBy_CatId($id));
             $category_item = json_decode($this->category->getId($id));
+           
             $list_blog = json_decode($this->blog->getList());
 //            echo $this->category->getId($id);
 //            die();
+
+            //pagination 
+             $count_product  = json_decode($this->product->count_product());
+            
+             $number_display = 9;
+             $total_page_number = ceil($count_product/$number_display);
+            
+             $process_url = new process_url();
+             $is_page = json_decode($process_url->is_page($_GET['url']));
+             // url chua page
+             if($is_page){
+                 $page_index =  json_decode($process_url->index_page($_GET['url']));
+                 $start_in = ($page_index-1)*$number_display;
+                 $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+             }else{ //url khong chua page
+                 $page_index=1;
+                 $start_in = 0;
+                 $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+             }
+
 
             $total_cart = 0;
             if(isset($_SESSION['cart'])){
@@ -105,7 +154,9 @@
                 'list_product'          => $list_product,
                 'category_item'         => $category_item,
                 'list_blog'             => $list_blog,
-                'total_cart'    => $total_cart
+                'total_cart'            => $total_cart,
+                'total_page_number'     => $total_page_number,
+                'page_index'            => $page_index
             ]);
 
         }
@@ -122,13 +173,37 @@
                 }
             }
 
+
+            //pagination 
+             $count_blog  = json_decode($this->blog->count_blog());
+            
+             $number_display = 1;
+             $total_page_number = ceil($count_blog/$number_display);
+            
+             $process_url = new process_url();
+             $is_page = json_decode($process_url->is_page($_GET['url']));
+             // url chua page
+             if($is_page){
+                 $page_index =  json_decode($process_url->index_page($_GET['url']));
+                 $start_in = ($page_index-1)*$number_display;
+                 $list_blog = json_decode($this->blog->getListlimit($start_in,$number_display));
+             }else{ //url khong chua page
+                 $page_index=1;
+                 $start_in = 0;
+                 $list_blog = json_decode($this->blog->getListlimit($start_in,$number_display));
+             }
+            
+
+
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/blog',
                 'categories'            => $categories,
                 'list_blog'             => $list_blog,
                 'list_categoryofblog'   => $list_categoryofblog,
                 'list_tags'             => $list_tags,
-                'total_cart'    => $total_cart
+                'total_cart'    => $total_cart,
+                'total_page_number' => $total_page_number,
+                'page_index'        => 1
             ]);
         }
 
@@ -146,18 +221,20 @@
                 array_push($list_blog_of_category,$blog_item);
             }
 
-
-
             $categories = json_decode($this->category->getList());
             $list_categoryofblog = json_decode($this->categoryofblog->getList());
             $list_tags = json_decode($this->tags->getList());
+
+            
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/blog',
                 'categories'            => $categories,
                 'list_categoryofblog'   => $list_categoryofblog,
                 'list_tags'             => $list_tags,
                 'list_blog_of_category' => $list_blog_of_category,
-                'total_cart'    => $total_cart
+                'total_cart'    => $total_cart,
+                'total_page_number' => 2,
+                'page_index'        => 1
             ]);
         }
 
@@ -247,15 +324,37 @@
                 }
             }
             $categories = json_decode($this->category->getList());
-            $list_product = json_decode($this->product->getList());
             $list_blog = json_decode($this->blog->getList());
+
+            //pagination products
+            $count_product  = json_decode($this->product->count_product());
+            
+            $number_display = 9;
+            $total_page_number = ceil($count_product/$number_display);
+           
+            $process_url = new process_url();
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+            }else{ //url khong chua page
+                $page_index=1;
+                $start_in = 0;
+                $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+            }
+
+
             
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/product',
                 'categories'            => $categories,
                 'list_product'          => $list_product,
                 'list_blog'             => $list_blog,
-                'total_cart'            => $total_cart
+                'total_cart'            => $total_cart,
+                'total_page_number' => $total_page_number,
+                'page_index'        => $page_index
             ]);
         }
 
@@ -267,18 +366,38 @@
                 }
             }
             $categories = json_decode($this->category->getList());
-            $list_product = json_decode($this->product->list_low_to_high_product());
+            // $list_product = json_decode($this->product->list_low_to_high_product());
             $list_blog = json_decode($this->blog->getList());
-            // echo json_encode($list_product);
-            // die();
+            
+            //pagination
+            $count_product  = json_decode($this->product->count_product());
+           
+            $number_display = 9;
+            $total_page_number = ceil($count_product/$number_display);
+        
+            $process_url = new process_url();
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $list_product = json_decode($this->product->list_low_to_high_product_limit($start_in,$number_display));
+            }else{ //url khong chua page
+                $page_index=1;
+                $start_in = 0;
+                $list_product =json_decode($this->product->list_low_to_high_product_limit($start_in,$number_display));
+            }
 
+          
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/product',
                 'categories'            => $categories,
                 'list_product'          => $list_product,
                 'list_blog'             => $list_blog,
                 'total_cart'            => $total_cart,
-                'message_success'       => 'Kết quả của sắp xếp từ thấp đến cao theo giá'
+                'message_success'       => 'Kết quả của sắp xếp từ thấp đến cao theo giá',
+                'total_page_number'     => $total_page_number,
+                'page_index'            => $page_index
             ]);
         }
 
@@ -290,8 +409,27 @@
                 }
             }
             $categories = json_decode($this->category->getList());
-            $list_product = json_decode($this->product->list_high_to_low_product());
+            // $list_product = json_decode($this->product->list_high_to_low_product());
             $list_blog = json_decode($this->blog->getList());
+
+             //pagination
+             $count_product  = json_decode($this->product->count_product());
+           
+             $number_display = 9;
+             $total_page_number = ceil($count_product/$number_display);
+         
+             $process_url = new process_url();
+             $is_page = json_decode($process_url->is_page($_GET['url']));
+             // url chua page
+             if($is_page){
+                 $page_index =  json_decode($process_url->index_page($_GET['url']));
+                 $start_in = ($page_index-1)*$number_display;
+                 $list_product = json_decode($this->product->list_high_to_low_product_limit($start_in,$number_display));
+             }else{ //url khong chua page
+                 $page_index=1;
+                 $start_in = 0;
+                 $list_product = json_decode($this->product->list_high_to_low_product_limit($start_in,$number_display));
+             }
             
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/product',
@@ -302,6 +440,55 @@
                 'message_success'       => 'Kết quả của sắp xếp từ cao đến thấp theo giá'
             ]);
         }
+
+        public function low_to_high_category($id){
+            $category_item = json_decode($this->category->getId($id));
+            $total_cart = 0;
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+            $categories = json_decode($this->category->getList());
+            
+            $list_blog = json_decode($this->blog->getList());
+            
+            //pagination
+            $count_product  = json_decode($this->product->count_product());
+           
+            $number_display = 9;
+            $total_page_number = ceil($count_product/$number_display);
+        
+            $process_url = new process_url();
+            $is_page = json_decode($process_url->is_page($_GET['url']));
+            // url chua page
+            if($is_page){
+                $page_index =  json_decode($process_url->index_page($_GET['url']));
+                $start_in = ($page_index-1)*$number_display;
+                $list_product = json_decode($this->product->low_to_high_category_limit($start_in,$number_display,$id));
+            }else{ //url khong chua page
+                $page_index=1;
+                $start_in = 0;
+                $list_product =json_decode($this->product->low_to_high_category_limit($start_in,$number_display,$id));
+            }
+
+          
+            $this->view('frontend/layout/master',[
+                'page'                  => 'frontend/pages/category',
+                'categories'            => $categories,
+                'list_product'          => $list_product,
+                'list_blog'             => $list_blog,
+                'total_cart'            => $total_cart,
+                'message_success'       => 'Kết quả của sắp xếp từ thấp đến cao theo giá '.$category_item->name,
+                'total_page_number'     => $total_page_number,
+                'page_index'            => $page_index
+            ]);
+        }
+
+        public function high_to_low_category(){
+
+        }
+
 
         public function contact_sendMail(){
             $full_name = $_POST['full_name'];
@@ -340,7 +527,8 @@
                 'list_product'          => $list_product,
                 'list_blog'             => $list_blog,
                 'total_cart'            => $total_cart,
-                'message_success'       => 'Kết quả tìm kiếm "'.$search_key.'"'
+                'message_success'       => 'Kết quả tìm kiếm "'.$search_key.'"',
+
             ]);
         }
 

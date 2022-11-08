@@ -38,7 +38,7 @@
                     <li><span><i class="fa fa-star" aria-hidden="true"></i></span></li>
                     <li><span><i  class="fa fa-star-half-o" aria-hidden="true"></i></span></li>
                 </ul>
-                <h5 class=" display-5">$<?php echo ($data['product_detail']->price_promotion!=0)?$data['product_detail']->price_promotion:$data['product_detail']->price_unit; ?></h5>
+                <h5 class=" display-5"><?php echo ($data['product_detail']->price_promotion!=0)?number_format($data['product_detail']->price_promotion):number_format($data['product_detail']->price_unit); ?>đ</h5>
                 <div class="message_success">
 
                 </div>
@@ -59,7 +59,7 @@
                 <hr>
                 <div class="product_detail_category my-4">
                     <span>Danh mục: </span>
-                    <a href=""><?php echo isset($data['product_detail'])?$data['product_detail']->cat_name:"" ?></a>
+                    <a href="index.php?url=Home/category/<?php echo $data['product_detail']->cat_id ?>"><?php echo isset($data['product_detail'])?$data['product_detail']->cat_name:"" ?></a>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
             <?php
                 if(isset($data['list_product_relate'])){
                     foreach($data['list_product_relate'] as $product_relate){ ?>
-                        <div class="col-xl-3 col-lg-4 col-sm-6 product-cover">
+                        <div class="col-xl-3 my-5 col-lg-4 col-sm-6 product-cover">
                             <div class="product-item">
                                 <a href="index.php?url=Home/product_detail/<?php echo $product_relate->id ?>">
                                     <img class="img-pro-primary" src="./public/uploads/<?php echo $product_relate->image[0]; ?>" alt="">
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="product_info">
                                     <a href="index.php?url=Home/product_detail/<?php echo $product_relate->id ?>"><?php echo $product_relate->name ?></a>
-                                    <span><?php ($product_relate->price_promotion!=0)?"$".$product_relate->price_promotion:"" ?>$<?php echo $product_relate->price_unit ?>.000</span>
+                                    <span><?php echo ($product_relate->price_promotion!=0)?number_format($product_relate->price_promotion):number_format($product_relate->price_unit) ?>đ</span>
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,7 @@
                                     foreach($data['list_order'] as $key => $order){ ?>
                             <tr>
                                 <th scope="row"><?php echo ($key+1); ?></th>
-                                <td><?php echo $order['full_name'] ?></td>
+                                <td><?php echo $order['full_name'] ?><br><a href="index.php?url=Order/print_order/<?php echo $order['id']; ?>"><i class="fa fa-print" aria-hidden="true"></i> In đơn hàng<a></td>
                                 <td>
                                     <?php
                                         $total =0;

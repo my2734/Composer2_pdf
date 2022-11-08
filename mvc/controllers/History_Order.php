@@ -35,11 +35,19 @@
                 $list_order[$key]['order_detail'] = $list_order_detail;
             }
 
+            $total_cart = 0;
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+
 
             $this->view('frontend/layout/master',[
                 'page' => 'frontend/pages/history_order',
                 'list_order' => $list_order,
-                'categories'    => $categories
+                'categories'    => $categories,
+                'total_cart'    => $total_cart
             ]);
         }
     }

@@ -26,14 +26,10 @@
 
                 <h5 class="mt-5">Sort By</h5>
                 <hr class="separate_category">
-                <select class="form-control custom_option">
-                    <option style="height: 80px!important;;">Sort by average rating</option>
-                    <option>Sort by popularity</option>
-                    <option>Sort by newness</option>
-                    <option>Sort by rice: low to high</option>
-                    <option>Sort by rice: high to low</option>
-                    <option>Product Name: Z</option>
-                </select>
+                <div class="filter__sort">
+                    <a href="index.php?url=Home/low_to_high_category/<?php echo $data['category_item']->id; ?>" class="icon_sort"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i>Thấp đến cao</a> <br>
+                    <a href="index.php?url=Home/high_to_low_category/<?php echo $data['category_item']->id ?>" class="icon_sort"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Cao đến thấp</a>
+                </div>
             </div>
             <!-- End Category -->
             <div class="col-lg-9">
@@ -42,7 +38,7 @@
                 <?php
                     if(isset($data['list_product'])){
                         foreach($data['list_product'] as $product){ ?>
-                            <div  class="col-lg-4   col-md-6 col-sm-6 product-cover" data-aos="fade-up"  data-aos-duration="1000" >
+                            <div  class="col-lg-4 my-5  col-md-6 col-sm-6 product-cover" data-aos="fade-up"  data-aos-duration="1000" >
                                 <div class="product-item">
                                     <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                         <img class="img-pro-primary" src="./public/uploads/<?php echo $product->image[0]; ?>" alt="">
@@ -55,9 +51,9 @@
                                         <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                             <?php echo $product->name ?>
                                         </a>
-                                        <span>$<?php echo $product->price_unit ?><?php
+                                        <span><?php echo number_format($product->price_unit) ?>đ<?php
                                                 if($product->price_promotion!=0){ ?>
-                                                    -$<?php echo $product->price_promotion ?>
+                                                    -<?php echo number_format($product->price_promotion) ?>đ
                                               <?php } ?>
                                         </span>
                                     </div>
@@ -68,20 +64,21 @@
 
                 </div>
                 <div class="row">
-                    <div class="col"></div>
-                    <div class="col">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col"></div>
-
+                <div class="col"></div>
+                <div class="col">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <?php 
+                                for($i=1;$i<=$data['total_page_number'];$i++){ ?>
+                                    <li class="page-item mx-1" ><a class="page-link" <?php if($data['page_index']==$i){ ?> style="background-color: #b19361; color: #fff;" <?php } ?> href="index.php?url=Home/category/page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                            <?php }
+                            ?>
+                        </ul>
+                    </nav>
                 </div>
+                <div class="col"></div>
+
+            </div>
             </div>
         </div>
     </div>

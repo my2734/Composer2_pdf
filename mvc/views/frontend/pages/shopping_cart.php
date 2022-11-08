@@ -44,16 +44,16 @@
                         </div>
                     </td>
                     <td><a href=""><?php echo $cart['pro_name']; ?></a></td>
-                    <td>$<?php echo $cart['pro_price'] ?></td>
+                    <td><?php echo number_format($cart['pro_price']) ?>đ</td>
                     <td>
                         <input id="<?php echo $key ?>" value="<?php echo $cart['quatity'] ?>" min="1" class="update_quantity_shoppingcart input_product_detail product_detail_input_quantity" type="number">
                     </td>
-                    <td class="total_price<?php echo $key; ?>">$<?php echo ($cart['pro_price']*$cart['quatity']); ?></td>
+                    <td class="total_price<?php echo $key; ?>"><?php echo number_format($cart['pro_price']*$cart['quatity']); ?>đ</td>
                 </tr>
                 <?php }  } ?>
                 <tr>
                     <th colspan="5">Tổng tiền</th>
-                    <td class="total_price">$<?php echo isset($data['total_price'])?$data['total_price']:0; ?></td>
+                    <td class="total_price"><?php echo isset($data['total_price'])?number_format($data['total_price']):0; ?>đ</td>
                 </tr>
             </tbody>
         </table>

@@ -128,6 +128,7 @@ include('./mvc/views/frontend/block/footer.php');
     $(document).ready(function(){
         $('.btn_add_one_cart').click(function(){
                var pro_id = $(this).attr('id');
+                // alert(pro_id);
 
             $.get({
                 url: "index.php?url=AddToCart/add_to_cart",

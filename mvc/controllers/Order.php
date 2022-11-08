@@ -1,5 +1,7 @@
 <?php 
 require_once('./mvc/helper/process_url.php');
+require 'vendor/autoload.php';
+use Dompdf\Dompdf;
 class Order extends Controller{
     public $slider;
         public $product;
@@ -70,6 +72,84 @@ class Order extends Controller{
         $data['order_id'] = $order_id;
         $data['string_status'] = "Đã nhận hàng";
         echo json_encode($data);
+    }
+
+    public function print_order($order_id){
+        $order = json_decode($this->order->getId($order_id));
+        $list_order_detail = json_decode($this->order_detail->getList_by_orderid($order_id));
+
+        // $total = 0;
+        //   foreach($list_order_detail as $order_detail){
+        //     $total += (int)$order_detail->pro_quantity*(int)$order_detail->pro_price;
+        //   }
+        //   echo $total;
+        //   die();
+        
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $html = '<!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+        </head>
+        <body>
+        
+        <h1 style="text-align: center">Order</h1>
+        <p>Buyer: '.$order->full_name.'</p>
+        <p>Phone: '.$order->phone.'</p>
+        <p>Email: '.$order->email.'</p>
+        <p>Address: '.$order->address_detail.', '.$order->district.', '.$order->conscious.', '.$order->country.'</p>
+        <p>Create At: '.$order->created_at.'</p>
+        
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>';
+          $total = 0;
+          foreach($list_order_detail as $order_detail){
+            $total += (int)$order_detail->pro_quantity*(int)$order_detail->pro_price;
+              $html.='<tr>
+                <td>'.$order_detail->pro_name.'</td>
+                <td>'.$order_detail->pro_quantity.'</td>
+                <td>'.$order_detail->pro_price.'vnd</td>
+              </tr>';
+          }
+          
+          $html.= '</table>
+          <h2 style="float: right">Total Price: '.$total.'vnd<h2>
+          
+          </body>
+          </html>';
+          
+          $dompdf->loadHtml($html);
+
+        // $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
+        exit(0);
     }
 
 }
