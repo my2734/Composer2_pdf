@@ -69,6 +69,8 @@
                 $email = $_POST['email'];
                 $password = md5($_POST['password']);
                 $result = json_decode($this->user->test_login($email,$password));
+                // echo json_encode($result);
+                // die();
 //                header('location: index.php?url=User_Login/login');
                 if(!$result){
                     $this->view('frontend/login/login',[
@@ -80,9 +82,11 @@
                 }else{
                     $_SESSION['user_login']['id'] = $result->id;
                     $_SESSION['user_login']['name'] = $result->user_name;
-                    if($result->image != ""){
+                    if($result->image != "" && $result->image!=null){
                         $_SESSION['user_login']['avatar'] = $result->image;
                     }
+
+                   
 
                     $list_slider = json_decode($this->slider->getList());
                     $list_product = json_decode($this->product->getList_limit());

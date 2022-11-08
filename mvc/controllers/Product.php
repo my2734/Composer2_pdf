@@ -23,6 +23,7 @@
             $process_url = new process_url();
             $is_page = json_decode($process_url->is_page($_GET['url']));
             // url chua page
+            $page_index = 1;
             if($is_page){
                 $page_index =  json_decode($process_url->index_page($_GET['url']));
                 $start_in = ($page_index-1)*$number_display;
@@ -31,12 +32,15 @@
                 $start_in = 0;
                 $productes = $this->product->getListlimit($start_in,$number_display);
             }
+           
             $productes = json_decode($productes);
             $this->view('backend/layout/master',[
                 'page'          => 'backend/product/index',
                 'productes'     => $productes,
-                'page_number'   => $page_number
+                'page_number'   => $page_number,
+                'page_index'    => $page_index
             ]);
+            
         }
 
         public function create(){

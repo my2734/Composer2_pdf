@@ -78,7 +78,7 @@
                                         elseif($order['status']==1) $string_status = "Nhận hàng";
                                         else  $string_status = "Đã nhận hàng";       
                                     ?>
-                                    <span id="<?php echo $order['id']; ?>" style="cursor:pointer" class="order_status_nhan_hang_confirm<?php echo $order['id']; ?> <?php if($order['status']==1) echo 'btn2 btn_nhan_hang'; ?> btn_confirm_order"><?php echo $string_status; ?></span>
+                                    <span id="<?php echo $order['id']; ?>" style="cursor:pointer; font-size: 16px;padding: 5px;" class="order_status_nhan_hang_confirm<?php echo $order['id']; ?> <?php if($order['status']==1) echo 'btn2 btn_nhan_hang'; ?> btn_confirm_order"><?php echo $string_status; ?></span>
                                     <br>
                                     <?php 
                                         if($order['status']==0){ ?>

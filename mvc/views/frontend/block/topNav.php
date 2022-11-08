@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php?url=Home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php?url=Home">Trang chủ <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item nav_item_down">
-                    <a class="nav-link" href="index.php?url=Home/product">Shop<span><i class="fa fa-chevron-down icon_navbar" aria-hidden="true"></i></span>
+                    <a class="nav-link" href="index.php?url=Home/product">Sản phẩm<span><i class="fa fa-chevron-down icon_navbar" aria-hidden="true"></i></span>
                         <div class="sub_navlink">
                             <?php
                                 if(isset($data['categories'])){
@@ -26,7 +26,7 @@
                     <a class="nav-link" href="index.php?url=Home/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?url=Home/contact">Contact Us</a>
+                    <a class="nav-link" href="index.php?url=Home/contact">Liên hệ</a>
                 </li>
                  <li class="ml-4" style="position: relative;">
                     <form method="POST" action="index.php?url=Home/search_product">
@@ -66,7 +66,7 @@
                                     if(isset($_SESSION['user_login']['avatar'])){ ?>
                                         <img style="object-fit: cover; width: 100%; height: 100%;border-radius:50%; " src="./public/uploads/<?php echo $_SESSION['user_login']['avatar'] ?>">
                                     <?php }else{ ?>
-                                        <img style="object-fit: cover; width: 100%; height: 100%;border-radius:50%; " src="https://thegioidienanh.vn/stores/news_dataimages/yenlinh/032022/09/17/2921_Gong-Yoo-2701221.jpg?rt=20220309173030">
+                                        <img style="object-fit: cover; width: 100%; height: 100%;border-radius:50%; " src="https://i.pinimg.com/280x280_RS/2e/45/66/2e4566fd829bcf9eb11ccdb5f252b02f.jpg">
                                     <?php }  ?>
                             </div>
                         <?php }else{ ?>
@@ -80,9 +80,11 @@
                             if(isset($_SESSION['user_login'])) { ?>
                                 <a href="index.php?url=Home/get_user_info" style="cursor: pointer" class="text-center mt-3 ">Thông tin cá nhân</a><br>
                                 <hr class="my-1">
-                                <a href="index.php?url=User_Login/logout" style="cursor: pointer" class="text-center mt-3 ">Logout</a>
+                                <a href="index.php?url=History_Order/index" style="cursor: pointer" class="text-center mt-3 ">Lịch sử mua hàng</a><br>
+                                <hr class="my-1">
+                                <a href="index.php?url=User_Login/logout" style="cursor: pointer" class="text-center mt-3 ">Đăng xuất</a>
                         <?php }else{ ?>
-                                <a href="index.php?url=User_Login/login" style="cursor: pointer" class="text-center mt-3 ">Login</a>
+                                <a href="index.php?url=User_Login/login" style="cursor: pointer" class="text-center mt-3 ">Đăng nhập</a>
                         <?php } ?>
 
                     </div>

@@ -19,6 +19,18 @@ class UserModel extends DB{
         return json_encode($result);
     }
 
+    public function getList(){
+        $query = "SELECT * FROM user";
+        $result = $this->con->query($query);
+        $arr = array();
+        if($result->rowCount() >0){
+            while($row = $result->fetch()){
+                array_push($arr,$row);
+            }
+        }
+        return json_encode($arr);
+    }
+
     public function getId($id){
         $query = "SELECT * FROM user WHERE id = '$id'";
         $result = $this->con->query($query);
@@ -36,5 +48,11 @@ class UserModel extends DB{
             $result = true;
         }
         return json_encode($result);
+    }
+
+    public function count_user(){
+        $query = "SELECT * from user";
+        $result = $this->con->query($query);
+        return json_encode($result->rowCount());
     }
 }

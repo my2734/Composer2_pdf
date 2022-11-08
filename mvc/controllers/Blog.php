@@ -26,6 +26,7 @@ require_once('./mvc/helper/process_url.php');
             $process_url = new process_url();
             $is_page = json_decode($process_url->is_page($_GET['url']));
             // url chua page
+            $page_index = 1;
             if($is_page){
                 $page_index =  json_decode($process_url->index_page($_GET['url']));
                 $start_in = ($page_index-1)*$number_display;
@@ -38,7 +39,8 @@ require_once('./mvc/helper/process_url.php');
             $this->view('backend/layout/master',[
                 'page'          => 'backend/blog/index',
                 'list_blog'     => $list_blog,
-                'total_page_number' => $total_page_number
+                'total_page_number' => $total_page_number,
+                'page_index'        => $page_index
             ]);
         }
 

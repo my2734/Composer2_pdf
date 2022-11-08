@@ -177,7 +177,7 @@
             //pagination 
              $count_blog  = json_decode($this->blog->count_blog());
             
-             $number_display = 1;
+             $number_display = 4;
              $total_page_number = ceil($count_blog/$number_display);
             
              $process_url = new process_url();
@@ -537,11 +537,19 @@
             $user_id = $_SESSION['user_login']['id'];
             
             $user_login = json_decode($this->user->getId($user_id));
-           
+            
+            $total_cart = 0;
+           if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $cart){
+                    $total_cart+=$cart['quatity'];
+                }
+            }
+
             $this->view('frontend/layout/master',[
                 'page'                  => 'frontend/pages/user_info',
                 'categories'            => $categories,
-                'user_login'             => $user_login
+                'user_login'             => $user_login,
+                'total_cart'               => $total_cart
             ]);
         }
 

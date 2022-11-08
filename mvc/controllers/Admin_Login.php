@@ -47,10 +47,7 @@
 
                     $_SESSION["admin_login"]['id']= $result->id;
                     $_SESSION["admin_login"]['email'] = $result->email;
-                    $this->view('backend/layout/master',[
-                        'page'              => 'backend/index',
-                        'message_success'   => 'Bạn đã đăng nhập thành công'
-                    ]);
+                    header('location: index.php?url=Admin')
                 }else{
                     $this->view('backend/login/login',[
                         'message_error' => "Đăng nhập không thành công"

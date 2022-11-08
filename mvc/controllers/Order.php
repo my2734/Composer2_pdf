@@ -2,6 +2,8 @@
 require_once('./mvc/helper/process_url.php');
 require 'vendor/autoload.php';
 use Dompdf\Dompdf;
+
+use Dompdf\Options;
 class Order extends Controller{
     public $slider;
         public $product;
@@ -37,6 +39,7 @@ class Order extends Controller{
         $process_url = new process_url();
         $is_page = json_decode($process_url->is_page($_GET['url']));
         // url chua page
+        $page_index = 1;
         if($is_page){
             $page_index =  json_decode($process_url->index_page($_GET['url']));
             $start_in = ($page_index-1)*$number_display;
@@ -54,7 +57,8 @@ class Order extends Controller{
         $this->view('backend/layout/master',[
             'page'          => 'backend/Order/index',
             'list_order' => $list_order,
-            'total_page_number' => $total_page_number
+            'total_page_number' => $total_page_number,
+            'page_index'    => $page_index
         ]);
     }
 
@@ -86,13 +90,24 @@ class Order extends Controller{
         //   die();
         
         // instantiate and use the dompdf class
+
+
+        // $options = new Options();
+        // $options->set('defaultFont', 'Courier');
+        // $dompdf = new Dompdf($options);
         $dompdf = new Dompdf();
         $html = '<!DOCTYPE html>
         <html>
         <head>
-        <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style>
+          body { font-family: DejaVu Sans, sans-serif; }
+        </style>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                
+                
+                
         <style>
         table {
           font-family: arial, sans-serif;
@@ -132,20 +147,20 @@ class Order extends Controller{
               $html.='<tr>
                 <td>'.$order_detail->pro_name.'</td>
                 <td>'.$order_detail->pro_quantity.'</td>
-                <td>'.$order_detail->pro_price.'vnd</td>
+                <td>'.number_format($order_detail->pro_price).'vnd</td>
               </tr>';
           }
           
           $html.= '</table>
-          <h2 style="float: right">Total Price: '.$total.'vnd<h2>
+          <h2 style="float: right">Total Price: '.number_format($total).'vnd<h2>
           
           </body>
           </html>';
           
-          $dompdf->loadHtml($html);
-
-        // $dompdf->setPaper('A4', 'landscape');
-        $dompdf->render();
+          // $dompdf->loadHtml($html,'UTF-8');
+          $dompdf->load_html($html, 'UTF-8');
+          $dompdf->set_paper('A4');
+          $dompdf->render();
 
         $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
 

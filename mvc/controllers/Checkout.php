@@ -137,7 +137,9 @@
            
             if(isset($order_id)){
                 $list_cart = $_SESSION['cart'];
+                $total = 0;
                 foreach($list_cart as $key => $cart){
+                    
                     $order_id = $order_id;
                     $user_id = $user_id;
                     $pro_id = $key;
@@ -147,23 +149,24 @@
                     $pro_quantity = $cart['quatity'];
                     $created_at = $created_at;
                     $updated_at = $updated_at;
+                    $total += (int)$pro_price*$pro_quantity;
                     $result = json_decode($this->order_detail->insert($order_id,$user_id,$pro_id,$pro_name,$pro_image,$pro_price,$pro_quantity,$created_at,$updated_at));
                 }
             }
             //Gui email
             $order_info = json_decode($this->order->getId($order_id),true);
             $order_info['order_detail'] = json_decode($this->order_detail->getList_by_orderid($order_id),true);
-            
+           
         
             
             $mail = new Mail();
             $mail->sendMail_Order($order_info);
             if($_POST['method_payment']==1){
                 $payment =  new Payment();
-                $payment->proccess_momo();
+                $payment->proccess_momo($total);
             }elseif($_POST['method_payment']==2){
                 $payment =  new Payment();
-                $payment->proccess_vnpay();
+                $payment->proccess_vnpay($total);
             }
 
 

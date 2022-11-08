@@ -174,8 +174,10 @@ include('./mvc/views/frontend/block/footer.php');
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>`);
-                   $('.total_price'+data['id']).html('$'+data['total_price_item']);
-                   $('.total_price').html('$'+data['total_price']);
+                    // data['total_price_item'] = data['total_price_item'].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    // alert(data['total_price_item'].replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                   $('.total_price'+data['id']).html(data['total_price_item']+"đ");
+                   $('.total_price').html(+data['total_price']+"đ");
                 }
             });
         });

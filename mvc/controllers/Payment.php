@@ -1,6 +1,6 @@
 <?php 
 class Payment extends Controller{
-    public function proccess_momo(){
+    public function proccess_momo($total){
         header('Content-type: text/html; charset=utf-8');
         function execPostRequest($url, $data)
         {
@@ -30,7 +30,7 @@ class Payment extends Controller{
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 
         $orderInfo = "Thanh toán qua MoMo";
-        $amount = "10000";
+        $amount = $total."";
         $orderId = time() ."";
         $redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
         $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
@@ -76,17 +76,17 @@ class Payment extends Controller{
         
     }
    
-    public function proccess_vnpay(){
+    public function proccess_vnpay($total){
         
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost/Composer1/index.php?url=Cart/checkout";
+        $vnp_Returnurl = "http://localhost/Composer1_pdf/index.php?url=Cart/checkout";
         $vnp_TmnCode = "URHY337Q";//Mã website tại VNPAY 
         $vnp_HashSecret = "ZWJHOFQYTBYRPFLFZXIPCGSYPKINECAE"; //Chuỗi bí mật
 
         $vnp_TxnRef = rand(00,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Thanh toan demo';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = 20000 * 100;
+        $vnp_Amount = $total * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
