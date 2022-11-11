@@ -2,15 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="facd804d-bf98-4bbf-a256-2e9ce89e240a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php_mvc_noithat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php_mvc_noithat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Admin_Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Admin_Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/controllers/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/controllers/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/core/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/blog/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/blog/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/blog/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/blog/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/categoryblog/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/categoryblog/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/product/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/product/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/tags/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/tags/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/views/backend/user/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/views/backend/user/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -24,9 +37,15 @@
     <include_path>
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="2GMPdFgnClw4ju03EQjOxV6v3Vh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,18 +55,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/composer1",
+    "last_opened_file_path": "C:/Users/Admin/Desktop/project",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "terminal",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,6 +73,10 @@
       <workItem from="1666195638664" duration="8764000" />
       <workItem from="1666249844580" duration="1012000" />
       <workItem from="1667466524044" duration="1749000" />
+      <workItem from="1667899412041" duration="4452000" />
+      <workItem from="1667976881316" duration="5179000" />
+      <workItem from="1668010600232" duration="3181000" />
+      <workItem from="1668064377469" duration="6302000" />
     </task>
     <servers />
   </component>

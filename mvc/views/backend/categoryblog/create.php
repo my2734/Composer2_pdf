@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Tạo mới danh mục (BLOG)</h3>
+    <h3><?php echo isset($data['categoryblog_edit'])?"Cập nhật danh mục (Blog)":"Tạo mới danh mục (BLOG)" ?></h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12">

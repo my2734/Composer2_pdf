@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Danh sách đơn hàng</h3>
+    <h3>Danh sách khách hàng</h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12 ">

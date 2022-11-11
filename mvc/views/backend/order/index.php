@@ -36,10 +36,10 @@
                                     </span><br>
                                     <span>
                                     <img height="50" width="50" src="./public/uploads/<?php echo $order_detail['pro_image'] ?>" alt="">
-                                    <span class="float-right text-secondary">$<?php echo $order_detail['pro_price'] ?> x <?php echo $order_detail['pro_quantity'] ?></span>
+                                    <span class="float-right text-secondary"><?php echo number_format($order_detail['pro_price']) ?>vnđ x <?php echo $order_detail['pro_quantity'] ?></span>
                                     </span><br>
                                     <?php } ?>
-                                    <p class="font-weight-bold mt-3">Thanh toán <span class="float-right ">$<?php echo $total; ?></span></p>
+                                    <p class="font-weight-bold mt-3">Thanh toán <span class="float-right "><?php echo number_format($total); ?>vnđ</span></p>
                                 </td>
                                 <td>
                                     <div class="row">

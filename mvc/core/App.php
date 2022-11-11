@@ -6,7 +6,9 @@
 
         function __construct()
         {
-
+//            if(isset($_SESSION['cart'])){
+//                unset($_SESSION['cart']);
+//            }
             //Controller cần Middleware
             $array_need_middleware_admin = ['Admin','Blog','Category','CategoryBlog','Product','Slider','Tags','Order'];
             $array_need_middleware_user = ['Cart','History_Order'];

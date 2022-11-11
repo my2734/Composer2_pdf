@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Thêm mới Blog</h3>
+    <h3><?php echo isset($data['blog_edit'])?"Cập nhật Blog":"Thêm mới Blog" ?></h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12">

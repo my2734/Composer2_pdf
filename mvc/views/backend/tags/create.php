@@ -1,5 +1,5 @@
 <div class="title_left">
-    <h3>Tạo mới Tags(Blog)</h3>
+    <h3><?php echo isset($data['tags_edit'])?"Cập nhật Tags(Blog)":"Tạo mới Tags(Blog)" ?></h3>
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12">

@@ -47,7 +47,7 @@
 
                     $_SESSION["admin_login"]['id']= $result->id;
                     $_SESSION["admin_login"]['email'] = $result->email;
-                    header('location: index.php?url=Admin')
+                    header('location: index.php?url=Admin');
                 }else{
                     $this->view('backend/login/login',[
                         'message_error' => "Đăng nhập không thành công"
