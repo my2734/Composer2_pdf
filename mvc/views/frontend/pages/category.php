@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid" style="background: #fef5ef!important;" >
         <div class="container">
             <h1 class="text-center">THERANKME SHOP</h1>
-            <p class="text-center">Home > Shop > Category</p>
+            <p class="text-center"><a class="text-link1" href="index.php?url=Ho=me/index">Home</a> > <a class="text-link1" href="index.php?url=Home/product">Shop</a> > Category</p>
         </div>
     </div>
 </div>
@@ -27,8 +27,8 @@
                 <h5 class="mt-5">Sort By</h5>
                 <hr class="separate_category">
                 <div class="filter__sort">
-                    <a href="index.php?url=Home/low_to_high_category/<?php echo $data['category_item']->id; ?>" class="icon_sort"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i>Thấp đến cao</a> <br>
-                    <a href="index.php?url=Home/high_to_low_category/<?php echo $data['category_item']->id ?>" class="icon_sort"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Cao đến thấp</a>
+                    <a href="index.php?url=Home/low_to_high_product" class="icon_sort"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i>Thấp đến cao</a> <br>
+                    <a href="index.php?url=Home/high_to_low_product" class="icon_sort"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Cao đến thấp</a>
                 </div>
             </div>
             <!-- End Category -->
@@ -51,9 +51,9 @@
                                         <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                             <?php echo $product->name ?>
                                         </a>
-                                        <span><?php echo number_format($product->price_unit) ?>đ<?php
+                                        <span><?php echo number_format($product->price_unit) ?>vnđ<?php
                                                 if($product->price_promotion!=0){ ?>
-                                                    -<?php echo number_format($product->price_promotion) ?>đ
+                                                    -<?php echo number_format($product->price_promotion) ?><?php echo ($product->price_promotion!=0)?"vnđ":"" ?>
                                               <?php } ?>
                                         </span>
                                     </div>

@@ -37,8 +37,8 @@
                         <tr>
                             <th scope="row"><?php echo ($key+1); ?></th>
                             <td width="150"><?php echo $product->name; ?></td>
-                            <td><?php echo $product->price_unit; ?></td>
-                            <td><?php echo $product->price_promotion; ?></td>
+                            <td><?php echo number_format($product->price_unit); ?>vnđ</td>
+                            <td><?php echo number_format($product->price_promotion); ?></td>
                             <td><span id="<?php echo $product->id ?>" class="badge btn_status_product<?php echo $product->id ?> btn_status_product badge-sm <?php echo ($product->status==1)?'badge-danger':'badge-secondary'  ?>"><?php echo ($product->status==1)?"Hiển thị":"Không hiển thị"; ?></span></td>
                             <td><?php echo $product->quantity; ?></td>
                             <td>

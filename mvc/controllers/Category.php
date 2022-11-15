@@ -215,9 +215,10 @@
         }
 
         public function change_status(){
+            
             $category_id = $_GET['category_id'];
             $category_edit = json_decode($this->category->getID($category_id));
-
+           
             $data = array();
             $data['category_id'] = $category_id;
             if($category_edit->status==0){
@@ -231,7 +232,28 @@
             }
             $updated_at =  $updated_at = date('Y-m-d H:i:s');
             $this->category->update_status($category_edit->id,$category_edit->status,$updated_at);
-            echo json_encode($data);
+            echo json_encode();
+        }
+
+        public function change_status_2(){
+            $category_id = $_GET['category_id'];
+            $category_edit = json_decode($this->category->getID($category_id));
+
+            $data1 = array();
+            $data1['category_id'] = $category_id;
+            if($category_edit->status==0){
+                $category_edit->status = 1;
+                $data1['status'] = 'Hiển thị';
+                $data1['num_status'] = 1;
+            }else{
+                $category_edit->status = 0;
+                $data1['status'] = "Không hiển thị";
+                $data1['num_status'] = 0;
+            }
+            $updated_at =  $updated_at = date('Y-m-d H:i:s');
+            $this->category->update_status($category_edit->id,$category_edit->status,$updated_at);
+            echo json_encode($data1['category_id']);
+
         }
     }
 ?>

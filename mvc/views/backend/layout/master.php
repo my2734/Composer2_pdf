@@ -144,25 +144,26 @@
         <script src="./public/backend/assets/build/js/custom.min.js"></script>
         <script>
             $(document).ready(function(){
-                $('.btn_status_category').click(function(){
-                    const category_id = $(this).attr('id');
+                // $('.btn_status_category').click(function(){
+                //     const category_id = $(this).attr('id');
+                   
 
-                    $.get({
-                       url: "index.php?url=Category/change_status",
-                       data: {category_id:category_id},
-                       success: function(data){
-                           data = $.parseJSON(data);
-                           $('.btn_status_category'+data['category_id']).html(data['status']);
-                           if(data['num_status']==1){
-                               $('.btn_status_category'+data['category_id']).removeClass('badge-secondary');
-                               $('.btn_status_category'+data['category_id']).addClass('badge-danger');
-                           }else{
-                               $('.btn_status_category'+data['category_id']).removeClass('badge-danger');
-                               $('.btn_status_category'+data['category_id']).addClass('badge-secondary');
-                           }
-                       }
-                    });
-                });
+                //     $.get({
+                //        url: "index.php?url=Category/change_status_2",
+                //        data: {category_id:category_id},
+                //        success: function(data){
+                //         //    data = $.parseJSON(data);
+                //         //    $('.btn_status_category'+data['category_id']).html(data['status']);
+                //         //    if(data['num_status']==1){
+                //         //        $('.btn_status_category'+data['category_id']).removeClass('badge-secondary');
+                //         //        $('.btn_status_category'+data['category_id']).addClass('badge-danger');
+                //         //    }else{
+                //         //        $('.btn_status_category'+data['category_id']).removeClass('badge-danger');
+                //         //        $('.btn_status_category'+data['category_id']).addClass('badge-secondary');
+                //         //    }
+                //        }
+                //     });
+                // });
 
                 $('.btn_status_product').click(function(){
                     const product_id = $(this).attr('id');

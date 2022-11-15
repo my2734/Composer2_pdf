@@ -85,6 +85,14 @@
             border-radius: 50%;
         }
 
+        .text-link1{
+            color: #b19361 !important;
+            font-size: 16px;
+            text-decoration: none !important;
+        }
+
+        
+
     </style>
 
 </head>

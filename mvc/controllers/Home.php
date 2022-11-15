@@ -117,13 +117,15 @@
             $categories = json_decode($this->category->getList());
             // $list_product = json_decode($this->product->getBy_CatId($id));
             $category_item = json_decode($this->category->getId($id));
+
+           
            
             $list_blog = json_decode($this->blog->getList());
 //            echo $this->category->getId($id);
 //            die();
 
             //pagination 
-             $count_product  = json_decode($this->product->count_product());
+             $count_product  = json_decode($this->product->count_product_by_cat_id($id));
             
              $number_display = 9;
              $total_page_number = ceil($count_product/$number_display);
@@ -134,11 +136,11 @@
              if($is_page){
                  $page_index =  json_decode($process_url->index_page($_GET['url']));
                  $start_in = ($page_index-1)*$number_display;
-                 $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+                 $list_product = json_decode($this->product->getListlimit_cat($start_in,$number_display,$id));
              }else{ //url khong chua page
                  $page_index=1;
                  $start_in = 0;
-                 $list_product = json_decode($this->product->getListlimit($start_in,$number_display));
+                 $list_product = json_decode($this->product->getListlimit_cat($start_in,$number_display,$id));
              }
 
 
@@ -504,7 +506,7 @@
             $list_product_need_find = json_decode($this->product->list_product_need_find($search_key));
             $html = "";
             foreach($list_product_need_find as $product){
-                $html.='<li style="display:block;" class="mt-3"><a href="index.php?url=Home/product_detail/'.$product->id.'"><img height="50" width="50" class="float-left mr-3" src="./public/uploads/'.$product->image[0].'" alt=""></a><span ><a href="index.php?url=Home/product_detail/'.$product->id.'" class="">'.$product->name.'</a><br><span class="info_search_item">'.$product->created_at.'</span></span></li>';
+                $html.='<li style="display:block;" class="mt-3"><a style="color: #000 !important" href="index.php?url=Home/product_detail/'.$product->id.'"><img height="50" width="50" class="float-left mr-3" src="./public/uploads/'.$product->image[0].'" alt=""></a><span ><a style="color: #b19361; font-size: 14px;text-decoration: none" href="index.php?url=Home/product_detail/'.$product->id.'" class="">'.$product->name.'</a><br><span class="info_search_item">'.$product->created_at.'</span></span></li>';
             }
             echo $html;
         }

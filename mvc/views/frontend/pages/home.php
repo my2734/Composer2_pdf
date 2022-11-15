@@ -94,9 +94,9 @@
                                         <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">
                                             <?php echo $product->name ?>
                                         </a>
-                                        <span><?php echo number_format($product->price_unit) ?>đ<?php
+                                        <span><?php echo number_format($product->price_unit) ?>vnđ<?php
                                                 if($product->price_promotion!=0){ ?>
-                                                    -<?php echo number_format($product->price_promotion) ?>
+                                                    -<?php echo number_format($product->price_promotion) ?><?php echo ($product->price_promotion!=0)?"vnđ":"" ?>
                                               <?php } ?>
                                         </span>
                                     </div>

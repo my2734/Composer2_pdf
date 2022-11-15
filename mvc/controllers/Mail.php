@@ -138,7 +138,7 @@
                                                             <tbody>
                                                                 <tr style="margin:0;padding:0">
                                                                     <td style="margin:0;padding:0 0 24px;border-bottom:2px solid #b49763">
-                                                                        <a href="http://localhost/composer1">SHOP NỘI THẤT</a> 
+                                                                        <a style="color: #000; text-decoration: none" href="http://localhost/Composer2_pdf/index.php">SHOP NỘI THẤT</a> 
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="margin:0;padding:0">
@@ -173,7 +173,7 @@
                                                                             href="http://transmail.ftrans01.com/LNQWOPRYJCT?id=62279=d0QFCQcKAFILSgVUUlJTBgYADwQGXwVUVFFWAFNQVQoMWwQNUwsCXQUDAlEBUgQGClVLCB0EAAkAVVMCAHZER0FcUFdFFlERRxhSBRdNE1tPAAFTUVEGAwBSUAoFBgYABQ9JUUVMQl8dGUMTAw0WWFJYW0sCEkNRXxZSAxtVWF4bdHtoZndiN2t8dDVdCgFJRQI=&amp;fl=XExBSQsXHRJFQRkNDRcRUFBYWQAJB0deHwYNXxp6dHtnF3ZWX0xXC0ZFGCwbTiZcXVRaBEsrSB1yDAxXWFcZUkdITRoBCA=="
                                                                             target="_blank"
                                                                             data-saferedirecturl="https://www.google.com/url?q=http://transmail.ftrans01.com/LNQWOPRYJCT?id%3D62279%3Dd0QFCQcKAFILSgVUUlJTBgYADwQGXwVUVFFWAFNQVQoMWwQNUwsCXQUDAlEBUgQGClVLCB0EAAkAVVMCAHZER0FcUFdFFlERRxhSBRdNE1tPAAFTUVEGAwBSUAoFBgYABQ9JUUVMQl8dGUMTAw0WWFJYW0sCEkNRXxZSAxtVWF4bdHtoZndiN2t8dDVdCgFJRQI%3D%26fl%3DXExBSQsXHRJFQRkNDRcRUFBYWQAJB0deHwYNXxp6dHtnF3ZWX0xXC0ZFGCwbTiZcXVRaBEsrSB1yDAxXWFcZUkdITRoBCA%3D%3D&amp;source=gmail&amp;ust=1666497733670000&amp;usg=AOvVaw0swp5BBXABNY4ZoDRd4gcs">
-                                                                            <a href="http://localhost/Composer1_pdf/index.php?url=History_Order/index" class="m_5519974867742442351link_button" style="text-decoration: none; padding: 20px; background: #efebdb;;
+                                                                            <a href="http://localhost/Composer2_pdf/index.php?url=History_Order/index" class="m_5519974867742442351link_button" style="text-decoration: none; padding: 20px; background: #efebdb;;
                                                                             font-size: 20px; border-radius: 20px; color: #000;font-weight: 700;
                                                                             ">Kiểm tra lịch sử đặt trước</button></a> 
                                                                         </div>

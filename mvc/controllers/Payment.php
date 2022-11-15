@@ -73,7 +73,7 @@ class Payment extends Controller{
     public function proccess_vnpay($total){
         
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost/Composer1_pdf/index.php?url=Cart/checkout";
+        $vnp_Returnurl = "http://localhost/Composer2_pdf/index.php?url=History_Order/index";
         $vnp_TmnCode = "URHY337Q";//Mã website tại VNPAY 
         $vnp_HashSecret = "ZWJHOFQYTBYRPFLFZXIPCGSYPKINECAE"; //Chuỗi bí mật
 

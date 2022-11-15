@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid" style="background: #fef5ef!important;" >
         <div class="container">
             <h1 class="text-center">THERANKME SHOP</h1>
-            <p class="text-center">Home > Shop > Tất cả sản phẩm</p>
+            <p class="text-center"><a class="text-link1" href="index.php?url=Home/index">Home</a> > <a class="text-link1" href="index.php?url=Home/product">Shop</a> > Tất cả sản phẩm</p>
         </div>
     </div>
 </div>
@@ -47,11 +47,11 @@
                             </div>
                             <div class="product_info">
                                 <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>"><?php echo $product->name ?></a>
-                                <span>$<?php echo $product->price_unit ?><?php
-                                    if($product->price_promotion!=0){ ?>
-                                -$<?php echo $product->price_promotion ?>
-                                <?php } ?>
-                                </span>
+                                <span><?php echo number_format($product->price_unit) ?>vnđ<?php
+                                                if($product->price_promotion!=0){ ?>
+                                                    -<?php echo number_format($product->price_promotion) ?><?php echo ($product->price_promotion!=0)?"vnđ":"" ?>
+                                              <?php } ?>
+                                        </span>
                             </div>
                         </div>
                     </div>

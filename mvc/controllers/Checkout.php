@@ -163,9 +163,11 @@
             $mail->sendMail_Order($order_info);
             if($_POST['method_payment']==1){
                 $payment =  new Payment();
+                unset($_SESSION['cart']);
                 $payment->proccess_momo($total);
             }elseif($_POST['method_payment']==2){
                 $payment =  new Payment();
+                unset($_SESSION['cart']);
                 $payment->proccess_vnpay($total);
             }
 
@@ -175,7 +177,7 @@
 
             if(isset($order_id)){
                 // unset($_SESSION['cart']);
-                // header('location: index.php?url=History_Order');
+                header('location: index.php?url=History_Order');
             }
         }
 

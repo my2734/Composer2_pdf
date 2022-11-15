@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid" style="background: #fef5ef!important;" >
         <div class="container">
             <h1 class="text-center">THERANKME SHOP</h1>
-            <p class="text-center">Home > Thông tin cá nhân</p>
+            <p class="text-center"><a class="text-link1" href="index.php?url=Home/index">Home</a> > Thông tin cá nhân</p>
         </div>
     </div>
 </div>

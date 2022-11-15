@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid" style="background: #fef5ef!important;" >
         <div class="container">
             <h1 class="text-center">THERANKME SHOP</h1>
-            <p class="text-center">Home > Shop > <?php
+            <p class="text-center"><a class="text-link1" href="index.php?url=Home/index">Home</a>  > <?php
                 if(isset($data['list_categoryofblog'])) echo "Blog";
                 elseif(isset($data['list_blog_of_category'])) echo "Danh mục(Blog)";
                 elseif(isset($data['list_blog_of_tags'])) echo "Thẻ(Blog)";

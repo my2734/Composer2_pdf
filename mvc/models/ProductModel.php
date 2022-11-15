@@ -46,6 +46,43 @@ class ProductModel extends DB{
 
     public function getListlimit($start_in,$number_display){
         $query = "SELECT * FROM productes ORDER BY id DESC Limit $start_in,$number_display";
+        
+        $result = $this->con->query($query);
+        $arr = array();
+        if($result->rowCount() > 0){
+            while($row =  $result->fetch()){
+                $row['image'] = array();
+                // select image of product
+                $id = $row['id'];
+                $cat_id = $row['cat_id'];
+                $query_select_image = "SELECT * FROM product_image where product_id = '$id'";
+                $result_select_image = $this->con->query($query_select_image);
+                if($result_select_image->rowCount() > 0){
+                    while($row_select_image = $result_select_image->fetch()){
+                        $image_of_product = $row_select_image['image'];
+                        array_push($row['image'],$image_of_product);
+                    }
+                }
+                // get category name of product
+                $query_select_category = "SELECT * FROM categories WHERE id = '$cat_id'";
+                $result_select_category =  $this->con->query($query_select_category);
+                if($result_select_category->rowCount() > 0){
+                    $row_select_category = $result_select_category->fetch();
+                    $row['cat_name'] =  $row_select_category['name'];
+                }
+                array_push($arr,$row);
+
+            }
+        }
+        // echo json_encode($arr);
+        // die();
+        return json_encode($arr);
+
+    }
+
+    public function getListlimit_cat($start_in,$number_display,$cat_id){
+        $query = "SELECT * FROM productes WHERE cat_id = '$cat_id' ORDER BY id DESC Limit $start_in,$number_display";
+        
         $result = $this->con->query($query);
         $arr = array();
         if($result->rowCount() > 0){
@@ -431,5 +468,12 @@ class ProductModel extends DB{
         $result = $this->con->query($query);
         return json_encode($result->rowCount());
     }
+
+    public function count_product_by_cat_id($cat_id){
+        $query = "SELECT * from productes WHERE cat_id = '$cat_id'";
+        $result = $this->con->query($query);
+        return json_encode($result->rowCount());
+    }
+
 }
 ?>
