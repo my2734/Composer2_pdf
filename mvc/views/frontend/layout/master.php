@@ -221,6 +221,8 @@ include('./mvc/views/frontend/block/footer.php');
                 $('#box_search').hide(100);
             }
         });
+
+        
     });
 </script>
 

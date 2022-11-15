@@ -10,6 +10,7 @@
         public $tags;
         public $blog_categoryofblog;
         public $blog_tags;
+        public $comment_pro;
 
         public function __construct()
         {
@@ -22,6 +23,7 @@
             $this->blog_categoryofblog = $this->model('Blog_CategoryOfBlogModel');
             $this->blog_tags = $this->model('Blog_TagsModel');
             $this->user = $this->model('UserModel');
+            $this->comment_pro = $this->model('Comment_ProModel');
         }
 
         function index(){
@@ -96,7 +98,9 @@
             $product_detail->cat_name = $category_of_product_detail->name;
             $list_product_relate = json_decode($this->product->get_list_relate($id,$category_of_product_detail->id));
             $categories = json_decode($this->category->getList());
+            $list_comment = json_decode($this->comment_pro->getList($id));  
 
+            
             $total_cart = 0;
             if(isset($_SESSION['cart'])){
                 foreach($_SESSION['cart'] as $cart){
@@ -109,6 +113,7 @@
                 'product_detail'        => $product_detail,
                 'list_product_relate'   => $list_product_relate,
                 'categories'            => $categories,
+                'list_comment'          => $list_comment,
                 'total_cart'    => $total_cart
             ]);
         }

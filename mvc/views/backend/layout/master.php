@@ -9,7 +9,6 @@
         <link rel="icon" href="images/favicon.ico" type="image/ico" />
         <title>TRANG QUẢN TRỊ THERANKME SHOP! | </title>
         <!-- <base href="localhost/"> -->
-        
         <!-- Bootstrap -->
         <link href="./public/backend/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
@@ -31,7 +30,7 @@
             .btn_status_product,
             .btn_status_tags,
             .btn_status_categoryofblog{
-                cursor: pointer;
+            cursor: pointer;
             }
         </style>
     </head>
@@ -59,7 +58,7 @@
                         <!-- sidebar menu -->
                         <?php
                             include('./mvc/views/backend/block/leftMenu.php'); 
-                        ?>
+                            ?>
                         <!-- /sidebar menu -->
                         <!-- /menu footer buttons -->
                         <div class="sidebar-footer hidden-small">
@@ -80,17 +79,17 @@
                     </div>
                 </div>
                 <!-- top navigation -->
-               <?php
-                include('./mvc/views/backend/block/topNav.php'); 
-               ?>
+                <?php
+                    include('./mvc/views/backend/block/topNav.php'); 
+                    ?>
                 <!-- /top navigation -->
                 <!-- page content -->
                 <div class="right_col" role="main">
-                   <?php 
+                    <?php 
                         if(isset($data['page'])){
                             include('./mvc/views/'.$data['page'].'.php');
                         }
-                   ?>
+                        ?>
                 </div>
                 <!-- /page content -->
                 <!-- footer content -->
@@ -142,12 +141,17 @@
         <script src="./public/backend/assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- Custom Theme Scripts -->
         <script src="./public/backend/assets/build/js/custom.min.js"></script>
+        <!-- Datepicker -->
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <!-- Moris Chart -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
         <script>
             $(document).ready(function(){
                 // $('.btn_status_category').click(function(){
                 //     const category_id = $(this).attr('id');
                    
-
+            
                 //     $.get({
                 //        url: "index.php?url=Category/change_status_2",
                 //        data: {category_id:category_id},
@@ -164,7 +168,7 @@
                 //        }
                 //     });
                 // });
-
+            
                 $('.btn_status_product').click(function(){
                     const product_id = $(this).attr('id');
                     $.get({
@@ -183,7 +187,7 @@
                         }
                     });
                 });
-
+            
                 $('.btn_status_tags').click(function(){
                     const tags_id = $(this).attr('id');
                     $.get({
@@ -202,7 +206,7 @@
                         }
                     });
                 });
-
+            
                 $('.btn_status_categoryofblog').click(function(){
                     const categoryofblog_id = $(this).attr('id');
                     $.get({
@@ -221,7 +225,7 @@
                        }
                     });
                 });
-
+            
                 $('.btn_status_blog').click(function(){
                     const blog_id = $(this).attr('id');
                     $.get({
@@ -237,11 +241,11 @@
                                 $('.btn_status_blog'+data['blog_id']).removeClass('badge-danger');
                                 $('.btn_status_blog'+data['blog_id']).addClass('badge-secondary');
                             }
-
+            
                         }
                     });
                 });
-
+            
                 $('.btn_confirm_order').click(function(){
                     const order_id = $(this).attr('id');
                     $.get({
@@ -254,8 +258,59 @@
                         }
                     })
                 });
-
+            
             });
+        </script>
+        <script>
+            var chart = Morris.Bar({
+                    element: 'myfirstchart',
+                    data: [
+                        {period: "2022-10-15", order: 5, sales: "63000000", profit: "19000000", quantity: 14},
+                        {period: "2022-10-16", order: 20, sales: "74000000", profit: "20000000", quantity: 32},
+                        {period: "2022-10-17", order: 12, sales: "66000000", profit: "18000000", quantity: 23},
+                        {period: "2022-10-18", order: 5, sales: "63000000", profit: "19000000", quantity: 14},
+                        {period: "2022-10-19", order: 20, sales: "74000000", profit: "20000000", quantity: 33},
+                        {period: "2022-10-20", order: 12, sales: "66000000", profit: "18000000", quantity: 22},
+                        {period: "2022-10-21", order: 5, sales: "63000000", profit: "19000000", quantity: 14},
+                        {period: "2022-10-22", order: 10, sales: "12000000", profit: "7000000", quantity: 16},
+                        {period: "2022-10-23", order: 14, sales: "25000000", profit: "16000000", quantity: 94},
+                        {period: "2022-10-24", order: 20, sales: "34000000", profit: "20000000", quantity: 33},
+                        {period: "2022-10-25", order: 12, sales: "36000000", profit: "18000000", quantity: 22},
+                        {period: "2022-10-26", order: 5, sales: "33000000", profit: "19000000", quantity: 14}
+                                ],
+                    xkey: 'period',
+                    ykeys: ['order', 'sales','profit','quantity'],
+                    labels: ['Đơn hàng', 'Doanh số','Lợi nhuận','Số lượng']
+                    });
+            $( function() {
+                $( "#datepicker1" ).datepicker({
+                dateFormat :"yy-mm-dd"
+                });
+            } );
+            
+            $( function() {
+                $( "#datepicker2" ).datepicker({
+                dateFormat :"yy-mm-dd"
+                });
+            } );
+            
+            $('.btn_thong_ke').click(function(){
+              const ngaybatdau = $('#datepicker1').val();
+              const ngayketthuc = $('#datepicker2').val();
+            
+           
+            $.post({
+              url:"index.php?url=Admin/thongke",
+              data:{ngaybatdau:ngaybatdau,ngayketthuc:ngayketthuc},
+              success: function(data){
+                // // alert(data);
+                data = JSON.parse(data);
+                $('#display_title_thongke').html(`<h4>Kết quả thống kê: </h4>`)
+                chart.setData(data);
+              }
+            });
+            });
+            
         </script>
     </body>
 </html>

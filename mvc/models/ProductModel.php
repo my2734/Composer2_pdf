@@ -45,7 +45,7 @@ class ProductModel extends DB{
     }
 
     public function getListlimit($start_in,$number_display){
-        $query = "SELECT * FROM productes ORDER BY id DESC Limit $start_in,$number_display";
+        $query = "SELECT * FROM productes WHERE status=1 ORDER BY id DESC Limit $start_in,$number_display";
         
         $result = $this->con->query($query);
         $arr = array();

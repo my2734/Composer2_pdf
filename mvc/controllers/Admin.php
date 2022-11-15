@@ -26,6 +26,7 @@
             $this->order = $this->model('OrderModel');
             $this->order_detail = $this->model('Order_DetailModel');
             $this->user = $this->model('UserModel');
+            $this->tbl_statistical = $this->model('Tbl_StatisticalModel');
         }
 
         public function index(){
@@ -41,6 +42,24 @@
                 'total_product'       => $total_product,
                 'total_blog'       => $total_blog,
             ]);
+        }
+
+        public function thongke(){
+            $ngaybatdau = $_POST['ngaybatdau'];
+            $ngayketthuc = $_POST['ngayketthuc'];
+            $list_date_order = json_decode($this->tbl_statistical->getList($ngaybatdau,$ngayketthuc));
+
+            foreach ($list_date_order as $key => $val) {
+                $chart_data[] = array(
+                    'period' => $val->order_date,
+                    'order' => $val->total_order,
+                    'sales' => $val->sales,
+                    'profit' => $val->profit,
+                    'quantity'   => $val->quantity
+                );
+            }
+
+            echo $data = json_encode($chart_data);
         }
     }
 ?>

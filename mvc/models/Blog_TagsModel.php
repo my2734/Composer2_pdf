@@ -24,7 +24,7 @@
         }
 
         public function list_blog_tags_by_tags_id($tags_id){
-            $query = "SELECT * FROM blog_tags WHERE tags_id = '$tags_id'";
+            $query = "SELECT * FROM blog_tags WHERE  tags_id = '$tags_id'";
             $result = $this->con->query($query);
             $arr = array();
             if($result->rowCount() > 0){

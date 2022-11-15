@@ -3,6 +3,9 @@
         <h3>General</h3>
         <ul class="nav side-menu">
             <li>
+                <a href="index.php?url=Admin/index"><i class="fa fa-tachometer" aria-hidden="true"></i></i> Home</a>
+            </li>
+            <li>
                 <a href="index.php?url=Order/index"><i class="fa fa-shopping-cart"></i> Order</a>
             </li>
             <li>

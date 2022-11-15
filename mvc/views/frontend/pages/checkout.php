@@ -149,6 +149,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <a href="index.php?url=Checkout/momo" class="btn btn-primary">MOMO</a>
                 <!-- <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
                           action="index.php?url=Payment/proccess_momo">
                     <input type="submit" class="btn2 text-center btn_review btn-primary" value="Thanh toán bằng trực tuyến MOMO">

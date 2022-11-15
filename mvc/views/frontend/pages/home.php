@@ -88,7 +88,7 @@
                                     </a>
                                     <div class="add_to_cart">
                                         <span id="<?php echo $product->id; ?>" class="btn_add_one_cart">Add to cart</span>
-                                        <span ><i class="fa fa-heart"></i></span>
+                                        <span id="<?php echo $product->id ?>" class="btn_heart"><i class="fa fa-heart"></i></span>
                                     </div>
                                     <div class="product_info">
                                         <a href="index.php?url=Home/product_detail/<?php echo $product->id; ?>">

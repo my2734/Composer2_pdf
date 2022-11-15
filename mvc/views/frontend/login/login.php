@@ -27,6 +27,12 @@
         .text_link:hover{
             color: #b19361;
         }
+
+        .text-link1{
+            color: #b19361 !important;
+            font-size: 16px;
+            text-decoration: none !important;
+        }
     </style>
 </head>
 <body style="position: relative;">
@@ -37,7 +43,7 @@
     <div class="jumbotron jumbotron-fluid" style="background: #fef5ef!important;" >
         <div class="container">
             <h1 class="text-center">THERANKME SHOP</h1>
-            <p class="text-center">Home > Shop > Login</p>
+            <p class="text-center"><a href="index.php?url=Home/index" class="text-link1">Home<a> > Login</p>
         </div>
     </div>
 </div>
