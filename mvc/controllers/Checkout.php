@@ -178,8 +178,7 @@
                 $id_statistical  = $statistical_item->id_statistical;
                 $kq = $this->tbl_statistical->update_order_date($sales,$profit,$quantity,$total_order,$id_statistical);
             }else{ // chua co order data
-                echo "khong ton tai";
-                die();
+               
                 $order_date = Date('Y-m-d');
                 $sales = $total;
                 $profit = ceil(0.05*$total);
@@ -196,16 +195,16 @@
             $mail->sendMail_Order($order_info);
             if($_POST['method_payment']==1){
                 $payment =  new Payment();
-                // unset($_SESSION['cart']);
+                unset($_SESSION['cart']);
                 $payment->proccess_momo($total);
             }elseif($_POST['method_payment']==2){
                 $payment =  new Payment();
-                // unset($_SESSION['cart']);
+                unset($_SESSION['cart']);
                 $payment->proccess_vnpay($total);
             }
 
             if($_POST['method_payment']!=1){
-                // unset($_SESSION['cart']);
+                unset($_SESSION['cart']);
                 header('location: index.php?url=History_Order');
             }
         }

@@ -293,6 +293,8 @@
                 dateFormat :"yy-mm-dd"
                 });
             } );
+
+            
             
             $('.btn_thong_ke').click(function(){
               const ngaybatdau = $('#datepicker1').val();

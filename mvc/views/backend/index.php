@@ -77,7 +77,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label for="exampleInputEmail1">Ngày bắt đầu</label>
+            <label for="exampleInputEmail1">Ngày kết thúc</label>
             <input type="text" id="datepicker2" class="form-control" id="exampleInputEmail1">
         </div>
     </div>
